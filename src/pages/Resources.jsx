@@ -101,7 +101,7 @@ const Resources = () => {
                                 title="U.A Highschool"
                                 description="A walkthrough of the U.A High School room, covering web enumeration, steganography, and privilege escalation."
                                 image="/writeups/tryhackme/ua-highschool.png"
-                                link="/writeups/tryhackme/U.A High school.pdf"
+                                link="/writeups/tryhackme/ua-highschool.pdf"
                             />
                         </div>
 
