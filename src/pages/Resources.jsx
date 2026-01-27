@@ -95,8 +95,18 @@ const Resources = () => {
                             />
                         </div>
 
+                        <div id="ua-highschool">
+                            <WriteupCard
+                                platform="TRYHACKME"
+                                title="U.A Highschool"
+                                description="A walkthrough of the U.A High School room, covering web enumeration, steganography, and privilege escalation."
+                                image="/writeups/tryhackme/ua-highschool.png"
+                                link="/writeups/tryhackme/U.A High school.pdf"
+                            />
+                        </div>
+
                         {/* Placeholders for other TOC items to show structure */}
-                        {['ua-highschool', 'mr-robot-ctf', 'vulnnet-internal'].map(id => (
+                        {['mr-robot-ctf', 'vulnnet-internal'].map(id => (
                             <div key={id} id={id} className="opacity-50 pointer-events-none filter grayscale">
                                 <WriteupCard
                                     platform="TRYHACKME"
