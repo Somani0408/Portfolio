@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className="flex flex-col gap-24 pb-20">
       {/* Hero Section */}
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20 min-h-[80vh] lg:min-h-[60vh]">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20 min-h-screen lg:min-h-screen">
 
         {/* Left Content */}
         <motion.div

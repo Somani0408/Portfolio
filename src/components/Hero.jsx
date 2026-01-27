@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative flex items-center overflow-hidden pt-24">
+    <section className="relative flex items-center overflow-hidden pt-24 min-h-screen">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0b0f14] to-black" />
 
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 w-full px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 items-center">
-        
+
         {/* LEFT CONTENT */}
         <div>
           <div className="flex gap-3 mb-6">

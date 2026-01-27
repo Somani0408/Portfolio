@@ -5,7 +5,8 @@ import Footer from '../components/Footer';
 
 const Layout = () => {
     return (
-        <div className="min-h-screen relative flex flex-col font-sans text-text-primary antialiased selection:bg-neon-cyan/30 selection:text-neon-cyan">
+        <div className="min-h-screen flex flex-col font-sans text-text-primary antialiased">
+            {/* Background */}
             <div className="fixed inset-0 bg-cyber-black -z-50" />
             <div className="fixed inset-0 bg-cyber-gradient -z-40 opacity-80" />
 
