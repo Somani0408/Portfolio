@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSearch, FiChevronDown, FiChevronRight, FiFolder, FiFileText, FiHash, FiMonitor, FiCpu, FiGlobe, FiServer, FiWifi, FiLayers, FiShield, FiCode } from 'react-icons/fi';
+import { FiSearch, FiChevronDown, FiChevronRight, FiFolder, FiFileText, FiHash, FiMonitor, FiCpu, FiGlobe, FiServer, FiWifi, FiLayers, FiShield, FiCode, FiTarget, FiTerminal } from 'react-icons/fi';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import WriteupCard from '../components/WriteupCard';
