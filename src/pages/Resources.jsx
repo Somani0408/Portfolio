@@ -7,17 +7,13 @@ import WriteupCard from '../components/WriteupCard';
 import TableOfContents from '../components/TableOfContents';
 
 const Resources = () => {
-    const [activeSection, setActiveSection] = useState('Writeups/TryHackMe');
+    const [activeSection, setActiveSection] = useState('Introduction');
     const [expandedSections, setExpandedSections] = useState({ 'Writeups': true });
     const [searchQuery, setSearchQuery] = useState('');
 
     const sidebarItems = [
-        { id: 'tryhackme', label: 'TryHackMe', icon: FiServer },
-        { id: 'hacksmarter', label: 'HackSmarter', icon: FiCpu },
-        { id: 'virtual-hacking-labs', label: 'Virtual Hacking Labs', icon: FiMonitor },
-        { id: 'vulnlab', label: 'VulnLab', icon: FiShield },
-        { id: 'proving-grounds-practice', label: 'Proving Grounds Practice', icon: FiLayers },
-        { id: 'proving-grounds-play', label: 'Proving Grounds Play', icon: FiLayers },
+        { id: 'Introduction', label: 'Introduction', icon: null }, // No icon for Intro as per screenshot style usually
+        { id: 'oscp-like-rooms', label: 'OSCP Like Rooms', icon: FiServer },
         {
             id: 'Writeups',
             label: 'Writeups',
@@ -27,6 +23,16 @@ const Resources = () => {
                 { id: 'Writeups/VulnHub', label: 'VulnHub' }
             ]
         },
+        { id: 'buffer-overflow', label: 'Buffer Overflow Guide', icon: FiCode },
+        { id: 'active-directory', label: 'Active Directory and Windows', icon: FiMonitor },
+        { id: 'osint', label: 'OSINT', icon: FiGlobe },
+        { id: 'web', label: 'Web', icon: FiGlobe },
+        { id: 'host-discovery', label: 'Host Discovery', icon: FiSearch },
+        { id: 'pivoting', label: 'Pivoting and Portforwarding', icon: FiLayers },
+        { id: 'linux', label: 'Linux', icon: FiMonitor },
+        { id: 'ports', label: 'Ports', icon: FiHash },
+        { id: 'metasploit', label: 'Metasploit', icon: FiTarget }, // Assuming FiTarget or similar
+        { id: 'powershell', label: 'PowerShell', icon: FiTerminal }, // Assuming FiTerminal
     ];
 
     const toggleSection = (id) => {
@@ -45,16 +51,94 @@ const Resources = () => {
     };
 
     // Content for the right sidebar (On This Page)
-    const tocItems = [
-        { id: 'lazy-admin', title: 'Lazy Admin' },
-        { id: 'blog-room', title: 'Blog Room' },
-        { id: 'ua-highschool', title: 'U.A. Highschool' },
-        { id: 'mr-robot-ctf', title: 'Mr Robot CTF' },
-        { id: 'vulnnet-internal', title: 'VulnNet: Internal' },
-    ];
+    const getTocItems = () => {
+        if (activeSection === 'Introduction') {
+            return [
+                { id: 'pentest-everything', title: 'Pentest Everything' },
+                { id: 'important', title: 'Important' },
+                { id: 'about-this-book', title: 'About this book' },
+                { id: 'github', title: 'GitHub' },
+                { id: 'contact', title: 'Contact' },
+                { id: 'support-me', title: 'Support me' },
+            ];
+        }
+        if (activeSection === 'Writeups/TryHackMe') {
+            return [
+                { id: 'lazy-admin', title: 'Lazy Admin' },
+                { id: 'blog-room', title: 'Blog Room' },
+                { id: 'ua-highschool', title: 'U.A. Highschool' },
+                { id: 'mr-robot-ctf', title: 'Mr Robot CTF' },
+                { id: 'vulnnet-internal', title: 'VulnNet: Internal' },
+            ];
+        }
+        return [];
+    };
 
     // Render Main Content based on selection
     const renderContent = () => {
+        if (activeSection === 'Introduction') {
+            return (
+                <div className="space-y-12 max-w-4xl">
+                    {/* Breadcrumb */}
+                    <div className="flex items-center gap-2 text-sm text-text-dim mb-8">
+                        <span>Pentest Everything</span>
+                        <FiChevronRight className="text-xs" />
+                        <span className="text-white font-medium">Introduction</span>
+                    </div>
+
+                    <div id="pentest-everything" className="space-y-6">
+                        <h1 className="text-5xl font-display font-bold text-white">Pentest Everything</h1>
+
+                        <div id="important" className="space-y-4 pt-8">
+                            <h2 className="text-2xl font-bold text-white">Important</h2>
+                            <div className="border-t border-white/10 my-4"></div>
+                            <p className="text-text-secondary leading-relaxed">
+                                Bookmark this page as other page links are likely to change or move over time. This page will always remain the same.
+                            </p>
+                        </div>
+
+                        <div id="about-this-book" className="space-y-4 pt-8">
+                            <h2 className="text-2xl font-bold text-white">About this book</h2>
+                            <div className="border-t border-white/10 my-4"></div>
+                            <p className="text-text-secondary leading-relaxed">
+                                This book is my collection of notes and write-ups for various offensive security based topics and platforms. This book is generally updated most days and will continue to be for the foreseeable future.
+                            </p>
+                            <p className="text-text-secondary leading-relaxed mt-4">
+                                If at any point this book stops being developed, I will leave a warning on this page.
+                            </p>
+                            <p className="text-text-secondary leading-relaxed mt-4">
+                                This book is primarily developed for viewing on Gitbook. If you wish to fork this book please do so on GitHub.
+                            </p>
+                        </div>
+
+                        <div id="github" className="space-y-4 pt-8">
+                            <h2 className="text-2xl font-bold text-white">GitHub</h2>
+                            <div className="border-t border-white/10 my-4"></div>
+                            <p className="text-text-secondary">
+                                URL: <a href="https://github.com/Somani0408" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://github.com/Somani0408</a>
+                            </p>
+                        </div>
+
+                        <div id="contact" className="space-y-4 pt-8">
+                            <h2 className="text-2xl font-bold text-white">Contact</h2>
+                            <div className="border-t border-white/10 my-4"></div>
+                            <p className="text-text-secondary">
+                                Email: <a href="mailto:harshitsomani2005@gmail.com" className="text-neon-cyan hover:underline">harshitsomani2005@gmail.com</a>
+                            </p>
+                        </div>
+
+                        <div id="support-me" className="space-y-4 pt-8">
+                            <h2 className="text-2xl font-bold text-white">Support me</h2>
+                            <div className="border-t border-white/10 my-4"></div>
+                            <p className="text-text-secondary leading-relaxed">
+                                If you find the work on here helpful, please consider supporting the project by checking out my portfolio and connecting with me via the <a href="/#contact" className="text-neon-cyan hover:underline">Contact page</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         if (activeSection === 'Writeups/TryHackMe') {
             return (
                 <div className="space-y-8">
@@ -120,7 +204,7 @@ const Resources = () => {
                             <div key={id} id={id} className="opacity-50 pointer-events-none filter grayscale">
                                 <WriteupCard
                                     platform="TRYHACKME"
-                                    title={tocItems.find(t => t.id === id)?.title}
+                                    title={getTocItems().find(t => t.id === id)?.title}
                                     description="Content coming soon..."
                                     image=""
                                     link="#"
@@ -158,7 +242,7 @@ const Resources = () => {
                     </div>
 
                     <div className="space-y-1">
-                        <h3 className="text-xs font-bold text-text-dim uppercase tracking-wider px-2 mb-2">Resources</h3>
+                        <h3 className="text-xs font-bold text-text-dim uppercase tracking-wider px-2 mb-2">Everything</h3>
                         {sidebarItems.map((item) => (
                             <div key={item.id}>
                                 <button
@@ -206,11 +290,9 @@ const Resources = () => {
             </main>
 
             {/* Right Sidebar (Table of Contents) */}
-            {activeSection === 'Writeups/TryHackMe' && (
-                <aside className="hidden xl:block w-64 flex-shrink-0">
-                    <TableOfContents items={tocItems} />
-                </aside>
-            )}
+            <aside className="hidden xl:block w-64 flex-shrink-0">
+                <TableOfContents items={getTocItems()} />
+            </aside>
         </div>
     );
 };
