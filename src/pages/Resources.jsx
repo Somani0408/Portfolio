@@ -105,8 +105,18 @@ const Resources = () => {
                             />
                         </div>
 
+                        <div id="mr-robot-ctf">
+                            <WriteupCard
+                                platform="TRYHACKME"
+                                title="Mr Robot CTF"
+                                description="Based on the Mr. Robot show, this room involves web exploitation, privilege escalation, and finding three hidden keys."
+                                image="/writeups/tryhackme/mr-robot-ctf.png"
+                                link="/writeups/tryhackme/mr-robot-ctf.pdf"
+                            />
+                        </div>
+
                         {/* Placeholders for other TOC items to show structure */}
-                        {['mr-robot-ctf', 'vulnnet-internal'].map(id => (
+                        {['vulnnet-internal'].map(id => (
                             <div key={id} id={id} className="opacity-50 pointer-events-none filter grayscale">
                                 <WriteupCard
                                     platform="TRYHACKME"
