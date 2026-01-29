@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { FiSearch, FiChevronDown, FiChevronRight, FiFolder, FiFileText, FiHash, FiMonitor, FiCpu, FiGlobe, FiServer, FiWifi, FiLayers, FiShield, FiCode, FiTarget, FiTerminal } from 'react-icons/fi';
+import { FiSearch, FiChevronDown, FiChevronRight, FiFolder, FiFileText, FiHash, FiMonitor, FiGlobe, FiServer, FiLayers, FiCode, FiTerminal, FiExternalLink } from 'react-icons/fi';
 import WriteupCard from '../components/WriteupCard';
 import TableOfContents from '../components/TableOfContents';
 
@@ -9,54 +9,67 @@ const Resources = () => {
     const navigate = useNavigate();
 
     // Determine active content based on URL params
-    // Default to 'introduction' if no section provided (though App.jsx redirects)
     const activeSlug = subcategory || section || 'introduction';
 
     // State for expanded sidebar groups
-    const [expandedSections, setExpandedSections] = useState({ 'writeups': true });
+    const [expandedSections, setExpandedSections] = useState({ 'certifications': true, 'writeups': true });
     const [searchQuery, setSearchQuery] = useState('');
 
-    // Sidebar structure with explicit paths
+    // Sidebar structure matching the screenshots
     const sidebarItems = [
         {
-            id: 'introduction',
-            label: 'Introduction',
-            path: '/resources/introduction',
+            id: 'ctf-development',
+            label: 'CTF Development',
+            path: '/resources/ctf-development',
             icon: null
         },
+        { type: 'divider', label: 'RESOURCES' },
         {
-            id: 'oscp-like-rooms',
-            label: 'OSCP Like Rooms',
-            path: '/resources/oscp-like-rooms',
-            icon: FiServer
+            id: 'certifications',
+            label: 'Certifications',
+            path: null,
+            icon: null,
+            children: [
+                { id: 'ine-certifications', label: 'INE Certifications', path: '/resources/ine-certifications' },
+                { id: 'ec-council-certifications', label: 'EC-Council Certifications', path: '/resources/ec-council-certifications' },
+                { id: 'comptia-certifications', label: 'CompTIA Certifications', path: '/resources/comptia-certifications' }
+            ]
         },
+        { id: 'cheat-sheets', label: 'Cheat Sheets', path: '/resources/cheat-sheets', icon: null },
+        { id: 'hashcat-word-lists', label: 'Hashcat Word lists and Rules', path: '/resources/hashcat-word-lists', icon: null },
+        { id: 'misc-snippets', label: 'Misc Snippets', path: '/resources/misc-snippets', icon: null },
+
+        // External Links with icons
+        { id: 'gtfobins', label: 'GTFOBins', path: 'https://gtfobins.github.io/', icon: FiExternalLink, external: true },
+        { id: 'lolbas', label: 'LOLBAS', path: 'https://lolbas-project.github.io/', icon: FiExternalLink, external: true },
+        { id: 'wadcoms', label: 'WADCOMS', path: 'https://wadcoms.github.io/', icon: FiExternalLink, external: true },
+        { id: 'reverse-shell-gen', label: 'Reverse Shell Generator', path: 'https://www.revshells.com/', icon: FiExternalLink, external: true },
+        { id: 'osint-tools', label: 'OSINT Tools', path: 'https://osintframework.com/', icon: FiExternalLink, external: true },
+        { id: 'weakpass', label: 'Weakpass', path: 'https://weakpass.com/', icon: FiExternalLink, external: true },
+
+        // Keeping Writeups as it was requested to be reusable
         {
             id: 'writeups',
             label: 'Writeups',
-            path: null, // Group header
-            icon: FiFileText,
+            path: null,
+            icon: null,
             children: [
                 { id: 'tryhackme', label: 'TryHackMe', path: '/resources/writeups/tryhackme' },
                 { id: 'vulnhub', label: 'VulnHub', path: '/resources/writeups/vulnhub' }
             ]
         },
-        { id: 'buffer-overflow', label: 'Buffer Overflow Guide', path: '/resources/buffer-overflow', icon: FiCode },
-        { id: 'active-directory', label: 'Active Directory and Windows', path: '/resources/active-directory', icon: FiMonitor },
-        { id: 'osint', label: 'OSINT', path: '/resources/osint', icon: FiGlobe },
-        { id: 'web', label: 'Web', path: '/resources/web', icon: FiGlobe },
-        { id: 'host-discovery', label: 'Host Discovery', path: '/resources/host-discovery', icon: FiSearch },
-        { id: 'pivoting', label: 'Pivoting and Port Forwarding', path: '/resources/pivoting', icon: FiLayers },
-        { id: 'linux', label: 'Linux', path: '/resources/linux', icon: FiMonitor },
-        { id: 'ports', label: 'Ports', path: '/resources/ports', icon: FiHash },
-        { id: 'metasploit', label: 'Metasploit', path: '/resources/metasploit', icon: FiTarget },
-        { id: 'powershell', label: 'PowerShell', path: '/resources/powershell', icon: FiTerminal },
+        { id: 'password-filter-dll', label: 'Password Filter DLL', path: '/resources/password-filter-dll', icon: null },
+        { id: 'dork-cheatsheet', label: 'Dork Cheatsheet', path: '/resources/dork-cheatsheet', icon: null },
+        { id: 'discovering-email', label: 'Discovering Email Addresses', path: '/resources/discovering-email', icon: null },
+        { id: 'dork-tools', label: 'Dork Tools', path: '/resources/dork-tools', icon: null },
     ];
 
-    // Ensure writeups group expands if we are in it
+    // Ensure groups expand if we are in them
     useEffect(() => {
         if (section === 'writeups') {
             setExpandedSections(prev => ({ ...prev, 'writeups': true }));
         }
+        // Add more auto-expand logic if needed for new groups
     }, [section]);
 
     const toggleGroup = (id) => {
@@ -67,6 +80,11 @@ const Resources = () => {
     };
 
     const handleNavigation = (item) => {
+        if (item.external) {
+            window.open(item.path, '_blank', 'noopener,noreferrer');
+            return;
+        }
+
         if (item.children) {
             toggleGroup(item.id);
         } else if (item.path) {
@@ -75,10 +93,9 @@ const Resources = () => {
     };
 
     const isActive = (item) => {
+        if (item.external) return false;
         if (item.path === location.pathname) return true;
-        // For subcategories mapping
         if (item.id === activeSlug) return true;
-        // Specifc check for writeups sub-items if URL is /resources/writeups/tryhackme
         if (item.path === `/resources/${section}/${subcategory}`) return true;
         return false;
     };
@@ -95,7 +112,9 @@ const Resources = () => {
                 { id: 'support-me', title: 'Support me' },
             ];
         }
-        if (activeSlug === 'tryhackme') {
+
+        // Writeups TOC
+        if (section === 'writeups' && subcategory === 'tryhackme') {
             return [
                 { id: 'lazy-admin', title: 'Lazy Admin' },
                 { id: 'blog-room', title: 'Blog Room' },
@@ -104,6 +123,7 @@ const Resources = () => {
                 { id: 'vulnnet-internal', title: 'VulnNet: Internal' },
             ];
         }
+
         return [];
     };
 
@@ -118,8 +138,9 @@ const Resources = () => {
                         <span className="text-white font-medium">Introduction</span>
                     </div>
 
-                    <div id="pentest-everything" className="space-y-6">
-                        <h1 className="text-5xl font-display font-bold text-white">Pentest Everything</h1>
+                    <div id="pentest-everything" className="space-y-8">
+                        {/* Title with slightly larger font to match screenshot */}
+                        <h1 className="text-5xl font-display font-bold text-white tracking-tight">Pentest Everything</h1>
 
                         <div id="important" className="space-y-4 pt-8">
                             <h2 className="text-2xl font-bold text-white">Important</h2>
@@ -171,7 +192,7 @@ const Resources = () => {
             );
         }
 
-        if (activeSlug === 'tryhackme') {
+        if (activeSlug === 'tryhackme' || (section === 'writeups' && subcategory === 'tryhackme')) {
             return (
                 <div className="space-y-8">
                     <div className="flex items-center gap-2 text-sm text-text-dim">
@@ -268,67 +289,97 @@ const Resources = () => {
             {/* LEFT SIDEBAR - Fixed */}
             <aside className="w-full lg:w-64 flex-shrink-0">
                 <div className="sticky top-28 space-y-6 max-h-[80vh] overflow-y-auto custom-scrollbar pr-2">
-                    <div className="relative">
-                        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary" />
-                        <input
-                            type="text"
-                            placeholder="Search resources..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-cyber-light-gray/50 border border-white/10 rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-neon-cyan/50 focus:shadow-neon transition-all"
-                        />
+
+                    {/* Header with Profile Image & Search - Matching Sidebar Screenshot */}
+                    <div className="space-y-4 mb-6">
+                        <Link to="/resources/introduction" className="flex items-center gap-3 px-2 group">
+                            <img
+                                src="/profile.jpg"
+                                alt="Profile"
+                                className="w-8 h-8 rounded-full object-cover border border-cyan-500/30 group-hover:border-neon-cyan transition-colors"
+                            />
+                            <h2 className="text-lg font-bold text-white group-hover:text-neon-cyan transition-colors">Resources</h2>
+                        </Link>
+
+                        <div className="relative">
+                            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary" />
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-cyber-light-gray/30 border border-white/5 rounded-md pl-9 pr-4 py-1.5 text-sm text-white focus:outline-none focus:border-neon-cyan/50 transition-all placeholder:text-text-dim"
+                            />
+                            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                                <span className="text-[10px] text-text-dim border border-white/10 px-1 rounded">Ctrl K</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="space-y-1">
-                        <h3 className="text-xs font-bold text-text-dim uppercase tracking-wider px-2 mb-2">Everything</h3>
-                        {sidebarItems.map((item) => (
-                            <div key={item.id}>
-                                <button
-                                    onClick={() => handleNavigation(item)}
-                                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all ${isActive(item) && !item.children
-                                            ? 'bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20'
-                                            : 'text-text-secondary hover:text-white hover:bg-white/5'
-                                        }`}
-                                >
-                                    <div className="flex items-center gap-2">
-                                        {item.icon && <item.icon className={isActive(item) ? 'text-neon-cyan' : ''} />}
+                        {sidebarItems.map((item, index) => {
+                            if (item.type === 'divider') {
+                                return (
+                                    <h3 key={index} className="text-[10px] font-bold text-text-dim/50 uppercase tracking-widest px-2 pt-4 pb-2">
                                         {item.label}
-                                    </div>
-                                    {item.children && (
-                                        expandedSections[item.id] ? <FiChevronDown /> : <FiChevronRight />
-                                    )}
-                                </button>
+                                    </h3>
+                                );
+                            }
 
-                                {item.children && expandedSections[item.id] && (
-                                    <div className="ml-4 pl-2 border-l border-white/10 space-y-1 mt-1">
-                                        {item.children.map((child) => (
-                                            <button
-                                                key={child.id}
-                                                onClick={() => handleNavigation(child)}
-                                                className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-all ${activeSlug === child.id
-                                                        ? 'text-neon-cyan bg-neon-cyan/5'
-                                                        : 'text-text-dim hover:text-white'
-                                                    }`}
-                                            >
-                                                {child.label}
-                                            </button>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
+                            return (
+                                <div key={item.id}>
+                                    <button
+                                        onClick={() => handleNavigation(item)}
+                                        className={`w-full flex items-center justify-between px-2 py-1.5 rounded-md text-sm transition-all group ${isActive(item) && !item.children
+                                                ? 'text-neon-cyan bg-neon-cyan/5'
+                                                : 'text-text-secondary hover:text-white hover:bg-white/5'
+                                            }`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            {/* Indication line for active item could go here if needed */}
+                                            <span>{item.label}</span>
+                                        </div>
+                                        <div className="text-text-dim group-hover:text-white/70">
+                                            {item.external && <item.icon className="text-xs" />}
+                                            {item.children && (
+                                                expandedSections[item.id] ? <FiChevronDown className="text-xs" /> : <FiChevronRight className="text-xs" />
+                                            )}
+                                        </div>
+                                    </button>
+
+                                    {item.children && expandedSections[item.id] && (
+                                        <div className="ml-2 pl-2 border-l border-white/5 space-y-0.5 mt-0.5">
+                                            {item.children.map((child) => (
+                                                <button
+                                                    key={child.id}
+                                                    onClick={() => handleNavigation(child)}
+                                                    className={`w-full text-left px-3 py-1.5 rounded-md text-sm transition-all ${activeSlug === child.id || (section === 'writeups' && subcategory === child.id)
+                                                            ? 'text-neon-cyan'
+                                                            : 'text-text-dim hover:text-white'
+                                                        }`}
+                                                >
+                                                    {child.label}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </aside>
 
             {/* CENTER CONTENT - Fluid */}
-            <main className="flex-1 min-w-0">
+            <main className="flex-1 min-w-0 px-4 md:px-0">
                 {renderContent()}
             </main>
 
             {/* RIGHT PANEL - Table of Contents (Hidden on mobile) */}
             <aside className="hidden xl:block w-64 flex-shrink-0">
                 <div className="sticky top-28">
+                    {/* On This Page Header */}
+                    <h3 className="text-xs font-bold text-text-dim uppercase tracking-wider mb-4 px-4">On This Page</h3>
                     <TableOfContents items={getTocItems()} />
                 </div>
             </aside>
