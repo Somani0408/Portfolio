@@ -120,7 +120,7 @@ const Resources = () => {
                 { id: 'blog-room', title: 'Blog Room' },
                 { id: 'ua-highschool', title: 'U.A. Highschool' },
                 { id: 'mr-robot-ctf', title: 'Mr Robot CTF' },
-                { id: 'vulnnet-internal', title: 'VulnNet: Internal' },
+                { id: 'vulnnet-internal', title: 'VulnNet Internal' },
             ];
         }
 
@@ -251,17 +251,15 @@ const Resources = () => {
                             />
                         </div>
 
-                        {['vulnnet-internal'].map(id => (
-                            <div key={id} id={id} className="opacity-50 pointer-events-none filter grayscale">
-                                <WriteupCard
-                                    platform="TRYHACKME"
-                                    title={getTocItems().find(t => t.id === id)?.title}
-                                    description="Content coming soon..."
-                                    image=""
-                                    link="#"
-                                />
-                            </div>
-                        ))}
+                        <div id="vulnnet-internal">
+                            <WriteupCard
+                                platform="TRYHACKME"
+                                title="VulnNet Internal"
+                                description="A realistic internal pentest involving multiple pivoting steps, Active Directory enumeration, and exploiting internal services."
+                                image="/writeups/tryhackme/vulnnet-internal.png"
+                                link="/writeups/tryhackme/vulnnet-internal.pdf"
+                            />
+                        </div>
                     </div>
                 </div>
             );
@@ -331,8 +329,8 @@ const Resources = () => {
                                     <button
                                         onClick={() => handleNavigation(item)}
                                         className={`w-full flex items-center justify-between px-2 py-1.5 rounded-md text-sm transition-all group ${isActive(item) && !item.children
-                                                ? 'text-neon-cyan bg-neon-cyan/5'
-                                                : 'text-text-secondary hover:text-white hover:bg-white/5'
+                                            ? 'text-neon-cyan bg-neon-cyan/5'
+                                            : 'text-text-secondary hover:text-white hover:bg-white/5'
                                             }`}
                                     >
                                         <div className="flex items-center gap-3">
@@ -354,8 +352,8 @@ const Resources = () => {
                                                     key={child.id}
                                                     onClick={() => handleNavigation(child)}
                                                     className={`w-full text-left px-3 py-1.5 rounded-md text-sm transition-all ${activeSlug === child.id || (section === 'writeups' && subcategory === child.id)
-                                                            ? 'text-neon-cyan'
-                                                            : 'text-text-dim hover:text-white'
+                                                        ? 'text-neon-cyan'
+                                                        : 'text-text-dim hover:text-white'
                                                         }`}
                                                 >
                                                     {child.label}
