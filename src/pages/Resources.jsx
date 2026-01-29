@@ -1,58 +1,91 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FiSearch, FiChevronDown, FiChevronRight, FiFolder, FiFileText, FiHash, FiMonitor, FiCpu, FiGlobe, FiServer, FiWifi, FiLayers, FiShield, FiCode, FiTarget, FiTerminal } from 'react-icons/fi';
-import Card from '../components/ui/Card';
-import Badge from '../components/ui/Badge';
 import WriteupCard from '../components/WriteupCard';
 import TableOfContents from '../components/TableOfContents';
 
 const Resources = () => {
-    const [activeSection, setActiveSection] = useState('Introduction');
-    const [expandedSections, setExpandedSections] = useState({ 'Writeups': true });
+    const { section, subcategory } = useParams();
+    const navigate = useNavigate();
+
+    // Determine active content based on URL params
+    // Default to 'introduction' if no section provided (though App.jsx redirects)
+    const activeSlug = subcategory || section || 'introduction';
+
+    // State for expanded sidebar groups
+    const [expandedSections, setExpandedSections] = useState({ 'writeups': true });
     const [searchQuery, setSearchQuery] = useState('');
 
+    // Sidebar structure with explicit paths
     const sidebarItems = [
-        { id: 'Introduction', label: 'Introduction', icon: null }, // No icon for Intro as per screenshot style usually
-        { id: 'oscp-like-rooms', label: 'OSCP Like Rooms', icon: FiServer },
         {
-            id: 'Writeups',
+            id: 'introduction',
+            label: 'Introduction',
+            path: '/resources/introduction',
+            icon: null
+        },
+        {
+            id: 'oscp-like-rooms',
+            label: 'OSCP Like Rooms',
+            path: '/resources/oscp-like-rooms',
+            icon: FiServer
+        },
+        {
+            id: 'writeups',
             label: 'Writeups',
+            path: null, // Group header
             icon: FiFileText,
             children: [
-                { id: 'Writeups/TryHackMe', label: 'TryHackMe' },
-                { id: 'Writeups/VulnHub', label: 'VulnHub' }
+                { id: 'tryhackme', label: 'TryHackMe', path: '/resources/writeups/tryhackme' },
+                { id: 'vulnhub', label: 'VulnHub', path: '/resources/writeups/vulnhub' }
             ]
         },
-        { id: 'buffer-overflow', label: 'Buffer Overflow Guide', icon: FiCode },
-        { id: 'active-directory', label: 'Active Directory and Windows', icon: FiMonitor },
-        { id: 'osint', label: 'OSINT', icon: FiGlobe },
-        { id: 'web', label: 'Web', icon: FiGlobe },
-        { id: 'host-discovery', label: 'Host Discovery', icon: FiSearch },
-        { id: 'pivoting', label: 'Pivoting and Portforwarding', icon: FiLayers },
-        { id: 'linux', label: 'Linux', icon: FiMonitor },
-        { id: 'ports', label: 'Ports', icon: FiHash },
-        { id: 'metasploit', label: 'Metasploit', icon: FiTarget }, // Assuming FiTarget or similar
-        { id: 'powershell', label: 'PowerShell', icon: FiTerminal }, // Assuming FiTerminal
+        { id: 'buffer-overflow', label: 'Buffer Overflow Guide', path: '/resources/buffer-overflow', icon: FiCode },
+        { id: 'active-directory', label: 'Active Directory and Windows', path: '/resources/active-directory', icon: FiMonitor },
+        { id: 'osint', label: 'OSINT', path: '/resources/osint', icon: FiGlobe },
+        { id: 'web', label: 'Web', path: '/resources/web', icon: FiGlobe },
+        { id: 'host-discovery', label: 'Host Discovery', path: '/resources/host-discovery', icon: FiSearch },
+        { id: 'pivoting', label: 'Pivoting and Port Forwarding', path: '/resources/pivoting', icon: FiLayers },
+        { id: 'linux', label: 'Linux', path: '/resources/linux', icon: FiMonitor },
+        { id: 'ports', label: 'Ports', path: '/resources/ports', icon: FiHash },
+        { id: 'metasploit', label: 'Metasploit', path: '/resources/metasploit', icon: FiTarget },
+        { id: 'powershell', label: 'PowerShell', path: '/resources/powershell', icon: FiTerminal },
     ];
 
-    const toggleSection = (id) => {
+    // Ensure writeups group expands if we are in it
+    useEffect(() => {
+        if (section === 'writeups') {
+            setExpandedSections(prev => ({ ...prev, 'writeups': true }));
+        }
+    }, [section]);
+
+    const toggleGroup = (id) => {
         setExpandedSections(prev => ({
             ...prev,
             [id]: !prev[id]
         }));
     };
 
-    const handleSectionClick = (item) => {
+    const handleNavigation = (item) => {
         if (item.children) {
-            toggleSection(item.id);
-        } else {
-            setActiveSection(item.id);
+            toggleGroup(item.id);
+        } else if (item.path) {
+            navigate(item.path);
         }
     };
 
-    // Content for the right sidebar (On This Page)
+    const isActive = (item) => {
+        if (item.path === location.pathname) return true;
+        // For subcategories mapping
+        if (item.id === activeSlug) return true;
+        // Specifc check for writeups sub-items if URL is /resources/writeups/tryhackme
+        if (item.path === `/resources/${section}/${subcategory}`) return true;
+        return false;
+    };
+
+    // Right Sidebar (TOC) Items
     const getTocItems = () => {
-        if (activeSection === 'Introduction') {
+        if (activeSlug === 'introduction') {
             return [
                 { id: 'pentest-everything', title: 'Pentest Everything' },
                 { id: 'important', title: 'Important' },
@@ -62,7 +95,7 @@ const Resources = () => {
                 { id: 'support-me', title: 'Support me' },
             ];
         }
-        if (activeSection === 'Writeups/TryHackMe') {
+        if (activeSlug === 'tryhackme') {
             return [
                 { id: 'lazy-admin', title: 'Lazy Admin' },
                 { id: 'blog-room', title: 'Blog Room' },
@@ -74,12 +107,11 @@ const Resources = () => {
         return [];
     };
 
-    // Render Main Content based on selection
+    // Render Content Logic
     const renderContent = () => {
-        if (activeSection === 'Introduction') {
+        if (activeSlug === 'introduction') {
             return (
                 <div className="space-y-12 max-w-4xl">
-                    {/* Breadcrumb */}
                     <div className="flex items-center gap-2 text-sm text-text-dim mb-8">
                         <span>Pentest Everything</span>
                         <FiChevronRight className="text-xs" />
@@ -131,7 +163,7 @@ const Resources = () => {
                             <h2 className="text-2xl font-bold text-white">Support me</h2>
                             <div className="border-t border-white/10 my-4"></div>
                             <p className="text-text-secondary leading-relaxed">
-                                If you find the work on here helpful, please consider supporting the project by checking out my portfolio and connecting with me via the <a href="/#contact" className="text-neon-cyan hover:underline">Contact page</a>.
+                                If you find the work on here helpful, please consider supporting the project by checking out my portfolio and connecting with me via the <Link to="/contact" className="text-neon-cyan hover:underline">Contact page</Link>.
                             </p>
                         </div>
                     </div>
@@ -139,17 +171,17 @@ const Resources = () => {
             );
         }
 
-        if (activeSection === 'Writeups/TryHackMe') {
+        if (activeSlug === 'tryhackme') {
             return (
                 <div className="space-y-8">
-                    {/* Breadcrumb */}
                     <div className="flex items-center gap-2 text-sm text-text-dim">
                         <span>Pentest Everything</span>
                         <FiChevronRight className="text-xs" />
                         <span>Writeups</span>
+                        <FiChevronRight className="text-xs" />
+                        <span className="text-white font-medium">TryHackMe</span>
                     </div>
 
-                    {/* Main Heading */}
                     <div className="space-y-4">
                         <h1 className="text-4xl font-display font-bold text-white">TryHackMe</h1>
                         <a href="#lazy-admin" className="block text-xl font-bold text-text-secondary hover:text-neon-cyan transition-colors">
@@ -157,7 +189,6 @@ const Resources = () => {
                         </a>
                     </div>
 
-                    {/* Writeups List */}
                     <div className="space-y-6">
                         <div id="lazy-admin">
                             <WriteupCard
@@ -199,7 +230,6 @@ const Resources = () => {
                             />
                         </div>
 
-                        {/* Placeholders for other TOC items to show structure */}
                         {['vulnnet-internal'].map(id => (
                             <div key={id} id={id} className="opacity-50 pointer-events-none filter grayscale">
                                 <WriteupCard
@@ -216,18 +246,26 @@ const Resources = () => {
             );
         }
 
-        // Placeholder for other sections
+        // Default / Placeholder for empty or unconnected sections
         return (
             <div className="flex flex-col items-center justify-center min-h-[50vh] text-text-dim">
-                <FiFolder className="text-6xl mb-4 opacity-20" />
-                <p className="text-xl">Select a category to view resources.</p>
+                <div className="flex items-center gap-2 text-sm text-text-dim mb-8 self-start">
+                    <span>Pentest Everything</span>
+                    <FiChevronRight className="text-xs" />
+                    <span className="text-white font-medium capitalize">{activeSlug.replace(/-/g, ' ')}</span>
+                </div>
+                <div className="text-center">
+                    <FiFolder className="text-6xl mb-4 opacity-20 mx-auto" />
+                    <h2 className="text-2xl font-bold text-white mb-2 capitalize">{activeSlug.replace(/-/g, ' ')}</h2>
+                    <p className="text-text-secondary">Content for this section is under development.</p>
+                </div>
             </div>
         );
     };
 
     return (
         <div className="flex flex-col lg:flex-row gap-8 min-h-screen pt-4 pb-20">
-            {/* Left Sidebar */}
+            {/* LEFT SIDEBAR - Fixed */}
             <aside className="w-full lg:w-64 flex-shrink-0">
                 <div className="sticky top-28 space-y-6 max-h-[80vh] overflow-y-auto custom-scrollbar pr-2">
                     <div className="relative">
@@ -246,14 +284,14 @@ const Resources = () => {
                         {sidebarItems.map((item) => (
                             <div key={item.id}>
                                 <button
-                                    onClick={() => handleSectionClick(item)}
-                                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all ${activeSection === item.id && !item.children
-                                        ? 'bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20'
-                                        : 'text-text-secondary hover:text-white hover:bg-white/5'
+                                    onClick={() => handleNavigation(item)}
+                                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all ${isActive(item) && !item.children
+                                            ? 'bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20'
+                                            : 'text-text-secondary hover:text-white hover:bg-white/5'
                                         }`}
                                 >
                                     <div className="flex items-center gap-2">
-                                        {item.icon && <item.icon className={activeSection === item.id ? 'text-neon-cyan' : ''} />}
+                                        {item.icon && <item.icon className={isActive(item) ? 'text-neon-cyan' : ''} />}
                                         {item.label}
                                     </div>
                                     {item.children && (
@@ -261,16 +299,15 @@ const Resources = () => {
                                     )}
                                 </button>
 
-                                {/* Nested Items */}
                                 {item.children && expandedSections[item.id] && (
                                     <div className="ml-4 pl-2 border-l border-white/10 space-y-1 mt-1">
                                         {item.children.map((child) => (
                                             <button
                                                 key={child.id}
-                                                onClick={() => setActiveSection(child.id)}
-                                                className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-all ${activeSection === child.id
-                                                    ? 'text-neon-cyan bg-neon-cyan/5'
-                                                    : 'text-text-dim hover:text-white'
+                                                onClick={() => handleNavigation(child)}
+                                                className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-all ${activeSlug === child.id
+                                                        ? 'text-neon-cyan bg-neon-cyan/5'
+                                                        : 'text-text-dim hover:text-white'
                                                     }`}
                                             >
                                                 {child.label}
@@ -284,14 +321,16 @@ const Resources = () => {
                 </div>
             </aside>
 
-            {/* Center Content */}
+            {/* CENTER CONTENT - Fluid */}
             <main className="flex-1 min-w-0">
                 {renderContent()}
             </main>
 
-            {/* Right Sidebar (Table of Contents) */}
+            {/* RIGHT PANEL - Table of Contents (Hidden on mobile) */}
             <aside className="hidden xl:block w-64 flex-shrink-0">
-                <TableOfContents items={getTocItems()} />
+                <div className="sticky top-28">
+                    <TableOfContents items={getTocItems()} />
+                </div>
             </aside>
         </div>
     );
