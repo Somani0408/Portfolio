@@ -52,7 +52,7 @@ const Home = () => {
             <Button variant="primary" icon={FiArrowRight} onClick={() => window.location.href = '/projects'}>
               View Projects
             </Button>
-            <Button variant="secondary" icon={FiDownload} onClick={() => window.open('https://linkedin.com/in/harshitsomani', '_blank')}>
+            <Button variant="secondary" icon={FiDownload} onClick={() => window.open('https://www.linkedin.com/in/harshit-somani-40a700351/', '_blank')}>
               Contact Me
             </Button>
           </div>
