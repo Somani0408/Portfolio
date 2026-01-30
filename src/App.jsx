@@ -5,7 +5,6 @@ import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Resources from './pages/Resources';
-import Courses from './pages/Courses';
 import Lab from './pages/Lab';
 import Contact from './components/Contact';
 import LazyAdminWriteup from './pages/writeups/LazyAdminWriteup';
@@ -21,7 +20,6 @@ function App() {
             <Route path="resources" element={<Navigate to="/resources/introduction" replace />} />
             <Route path="resources/:section" element={<Resources />} />
             <Route path="resources/:section/:subcategory" element={<Resources />} />
-            <Route path="courses" element={<Courses />} />
             <Route path="lab" element={<Lab />} />
             <Route path="contact" element={<Contact />} />
             <Route path="resources/writeups/tryhackme/lazy-admin" element={<LazyAdminWriteup />} />

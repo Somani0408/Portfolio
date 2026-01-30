@@ -20,7 +20,6 @@ const Navbar = () => {
         { name: 'Home', path: '/', icon: FiHome },
         { name: 'Projects', path: '/projects', icon: FiCpu },
         { name: 'Resources', path: '/resources', icon: FiBook },
-        { name: 'Courses', path: '/courses', icon: FiGrid },
         { name: 'Lab', path: '/lab', icon: FiTerminal },
         { name: 'HIRE ME', path: '/contact', icon: FiMail },
     ];

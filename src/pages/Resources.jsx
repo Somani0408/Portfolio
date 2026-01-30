@@ -62,6 +62,9 @@ const Resources = () => {
         { id: 'dork-cheatsheet', label: 'Dork Cheatsheet', path: '/resources/dork-cheatsheet', icon: null },
         { id: 'discovering-email', label: 'Discovering Email Addresses', path: '/resources/discovering-email', icon: null },
         { id: 'dork-tools', label: 'Dork Tools', path: '/resources/dork-tools', icon: null },
+
+        // Security Awareness Section
+        { id: 'awareness', label: 'Security Awareness', path: '/resources/awareness', icon: null },
     ];
 
     // Ensure groups expand if we are in them
@@ -259,6 +262,63 @@ const Resources = () => {
                                 image="/writeups/tryhackme/vulnnet-internal.png"
                                 link="/writeups/tryhackme/vulnnet-internal.pdf"
                             />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeSlug === 'awareness') {
+            return (
+                <div className="space-y-12 max-w-4xl">
+                    <div className="flex items-center gap-2 text-sm text-text-dim mb-8">
+                        <span>Pentest Everything</span>
+                        <FiChevronRight className="text-xs" />
+                        <span className="text-white font-medium">Security Awareness</span>
+                    </div>
+
+                    <div className="space-y-8">
+                        <h1 className="text-5xl font-display font-bold text-white tracking-tight">Security Awareness</h1>
+
+                        <div className="prose prose-invert max-w-none text-text-secondary space-y-6">
+                            <p className="text-lg leading-relaxed">
+                                Security awareness is not just about identifying phishing emails—it's about building a robust security culture where every individual understands their role in protecting the organization.
+                            </p>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                    <h3 className="text-xl font-bold text-white mb-3">Phishing Defense</h3>
+                                    <p className="text-sm">Recognizing sophisticated social engineering attacks and email-based threats before they compromise systems.</p>
+                                </div>
+                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                    <h3 className="text-xl font-bold text-white mb-3">Human Behavior</h3>
+                                    <p className="text-sm">Understanding how potential attackers exploit human psychology and trust to bypass technical controls.</p>
+                                </div>
+                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                    <h3 className="text-xl font-bold text-white mb-3">Email Safety</h3>
+                                    <p className="text-sm">Best practices for handling attachments, links, and verifying sender identity in daily communications.</p>
+                                </div>
+                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                    <h3 className="text-xl font-bold text-white mb-3">Security Culture</h3>
+                                    <p className="text-sm">Fostering an environment where security is a shared responsibility and reporting incidents is encouraged.</p>
+                                </div>
+                            </div>
+
+                            <div className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-neon-cyan/10 to-transparent border border-neon-cyan/20">
+                                <h2 className="text-2xl font-bold text-white mb-4">Protecting Our Organization</h2>
+                                <p className="mb-6">
+                                    Download the comprehensive presentation covering modern security threats and defensive strategies.
+                                </p>
+                                <a
+                                    href="/resources/awareness/Presentation - Protecting Our Organization.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-neon-cyan text-cyber-black font-bold rounded-lg hover:bg-neon-cyan/90 transition-all"
+                                >
+                                    <FiFileText />
+                                    Recall Security Training PDF
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
