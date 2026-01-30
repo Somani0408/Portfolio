@@ -39,8 +39,8 @@ const Contact = () => {
                                 <div className="p-3 bg-slate-800 rounded-lg text-neon-cyan">
                                     <FaEnvelope className="text-xl" />
                                 </div>
-                                <a href="mailto:harshitsomani@email.com" className="text-slate-300 hover:text-white transition-colors">
-                                    harshitsomani@email.com
+                                <a href="mailto:harshitsomani2005@gmail.com" className="text-slate-300 hover:text-white transition-colors">
+                                    harshitsomani2005@gmail.com
                                 </a>
                             </div>
 
@@ -69,12 +69,12 @@ const Contact = () => {
                         </div>
 
                         <div className="space-y-4">
-                            <a href="https://github.com/harshitsomani" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-colors group">
+                            <a href="https://github.com/Somani0408" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-colors group">
                                 <div className="flex items-center gap-4">
                                     <FaGithub className="text-2xl text-slate-300 group-hover:text-white transition-colors" />
                                     <span className="font-medium text-slate-300 group-hover:text-white">GitHub</span>
                                 </div>
-                                <span className="text-sm text-slate-500 group-hover:text-neon-cyan transition-colors">harshitsomani</span>
+                                <span className="text-sm text-slate-500 group-hover:text-neon-cyan transition-colors">Somani0408</span>
                             </a>
 
                             <a href="https://www.linkedin.com/in/harshit-somani-40a700351/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-colors group">
@@ -82,7 +82,7 @@ const Contact = () => {
                                     <FaLinkedin className="text-2xl text-slate-300 group-hover:text-white transition-colors" />
                                     <span className="font-medium text-slate-300 group-hover:text-white">LinkedIn</span>
                                 </div>
-                                <span className="text-sm text-slate-500 group-hover:text-neon-cyan transition-colors">in/harshitsomani</span>
+                                <span className="text-sm text-slate-500 group-hover:text-neon-cyan transition-colors">in/harshit-somani-40a700351</span>
                             </a>
                         </div>
                     </motion.div>

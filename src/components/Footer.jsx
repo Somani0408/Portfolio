@@ -3,9 +3,9 @@ import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
 const Footer = () => {
     const socialLinks = [
-        { icon: FiGithub, href: "https://github.com/harshitsomani", label: "GitHub" },
+        { icon: FiGithub, href: "https://github.com/Somani0408", label: "GitHub" },
         { icon: FiLinkedin, href: "https://www.linkedin.com/in/harshit-somani-40a700351/", label: "LinkedIn" },
-        { icon: FiMail, href: "mailto:harshitsomani@email.com", label: "Email" },
+        { icon: FiMail, href: "mailto:harshitsomani2005@gmail.com", label: "Email" },
     ];
 
     return (
