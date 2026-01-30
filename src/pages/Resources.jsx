@@ -325,6 +325,179 @@ const Resources = () => {
             );
         }
 
+        if (activeSlug === 'hashcat-word-lists') {
+            return (
+                <div className="space-y-12 max-w-4xl">
+                    <div className="flex items-center gap-2 text-sm text-text-dim mb-8">
+                        <span>Pentest Everything</span>
+                        <FiChevronRight className="text-xs" />
+                        <span className="text-white font-medium">Hashcat Resources</span>
+                    </div>
+
+                    <div id="hashcat-word-lists-and-rules" className="space-y-8">
+                        <h1 className="text-5xl font-display font-bold text-white tracking-tight">Hashcat Resources</h1>
+
+                        <div className="space-y-6">
+                            <h2 className="text-2xl font-bold text-neon-cyan flex items-center gap-2">
+                                <span className="text-neon-cyan">#</span> Hashcat Word lists and Rules
+                            </h2>
+
+                            {/* Large Wordlists Table */}
+                            <div className="space-y-4 pt-4">
+                                <h3 className="text-xl font-bold text-text-secondary">## Recommended General Large Word lists</h3>
+                                <div className="overflow-x-auto border border-white/10 rounded-lg">
+                                    <table className="w-full text-left border-collapse">
+                                        <thead>
+                                            <tr className="bg-white/5">
+                                                <th className="p-4 border-b border-white/10 text-xs font-bold text-text-dim uppercase">Word List</th>
+                                                <th className="p-4 border-b border-white/10 text-xs font-bold text-text-dim uppercase">Link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-white/5 text-sm text-text-secondary">
+                                            <tr>
+                                                <td className="p-4">AllInOne</td>
+                                                <td className="p-4"><a href="https://weakpass.com/all-in-one" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/all-in-one</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">Rockyou2021</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1943" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1943</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">Weakpass_3a</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1948" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1948</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">Top2Billion-probable-v2</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1858" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1858</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            {/* Medium Wordlists Table */}
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-xl font-bold text-text-secondary">## Recommended General Medium Word lists</h3>
+                                <div className="overflow-x-auto border border-white/10 rounded-lg">
+                                    <table className="w-full text-left border-collapse">
+                                        <thead>
+                                            <tr className="bg-white/5">
+                                                <th className="p-4 border-b border-white/10 text-xs font-bold text-text-dim uppercase">Word List</th>
+                                                <th className="p-4 border-b border-white/10 text-xs font-bold text-text-dim uppercase">Link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-white/5 text-sm text-text-secondary">
+                                            <tr>
+                                                <td className="p-4">hk_hlm_founds</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1256" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1256</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">RP4</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/914" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/914</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">Ignis</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1935" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1935</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">Top29Million-probable-v2</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1857" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1857</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">SkullSecurityComp</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/671" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/671</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            {/* Specific Wordlists Table */}
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-xl font-bold text-text-secondary">## Specific Word lists</h3>
+                                <div className="overflow-x-auto border border-white/10 rounded-lg">
+                                    <table className="w-full text-left border-collapse">
+                                        <thead>
+                                            <tr className="bg-white/5">
+                                                <th className="p-4 border-b border-white/10 text-xs font-bold text-text-dim uppercase">Word List</th>
+                                                <th className="p-4 border-b border-white/10 text-xs font-bold text-text-dim uppercase">Use Case</th>
+                                                <th className="p-4 border-b border-white/10 text-xs font-bold text-text-dim uppercase">Link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-white/5 text-sm text-text-secondary">
+                                            <tr>
+                                                <td className="p-4">Kerberoast_pws</td>
+                                                <td className="p-4">SPN cracking</td>
+                                                <td className="p-4"><a href="https://gist.github.com/The-Viper-One/a1ee60d8b3607807cc387d794e809f0b" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://gist.github.com/The-Viper-One/...</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">weakpass_3w</td>
+                                                <td className="p-4">8-24 characters</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1950" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1950</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-4">weakpass_3p</td>
+                                                <td className="p-4">Contains only printable characters</td>
+                                                <td className="p-4"><a href="https://weakpass.com/wordlist/1949" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">https://weakpass.com/wordlist/1949</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            {/* Cracked Hashes Command */}
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-xl font-bold text-text-secondary">## Word list from cracked hashes</h3>
+                                <p className="text-text-secondary">Locate pot-file</p>
+                                <div className="bg-cyber-black/50 border border-white/10 rounded-lg p-4 font-mono text-sm text-neon-cyan overflow-x-auto">
+                                    find / -name hashcat.potfile 2&gt; /dev/null
+                                </div>
+                                <p className="text-text-secondary pt-2">Place the cracked hash passwords into its own word list.</p>
+                                <div className="bg-cyber-black/50 border border-white/10 rounded-lg p-4 font-mono text-sm text-neon-cyan overflow-x-auto">
+                                    cat [PotFile] | sed 's/^.*://' &gt; CrackedHashesWordlist.txt
+                                </div>
+                            </div>
+
+                            {/* Scraping Command */}
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-xl font-bold text-text-secondary">## Word list from website scraping</h3>
+                                <div className="bg-cyber-black/50 border border-white/10 rounded-lg p-4 font-mono text-sm text-neon-cyan overflow-x-auto">
+                                    cewl [URL] -d 3 -m 5 --with-numbers | tee Wordlists/CewlWordList.txt
+                                </div>
+                            </div>
+
+                            {/* Rules */}
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-xl font-bold text-text-secondary">## Recommended Rules</h3>
+                                <ul className="list-disc list-inside space-y-2 text-text-secondary ml-4">
+                                    <li><span className="text-white font-bold">NSA Rules:</span> <a href="https://github.com/NSAKEY/nsa-rules" className="text-neon-cyan hover:underline">https://github.com/NSAKEY/nsa-rules</a></li>
+                                    <li><span className="text-white font-bold">OneRuleToRuleThemAllStill:</span> <a href="https://github.com/NotSoSecure/password_rules" className="text-neon-cyan hover:underline">https://github.com/NotSoSecure/password_rules</a></li>
+                                    <li><span className="text-white font-bold">Unic0rn28:</span> <a href="https://github.com/zorgnax/unic0rn" className="text-neon-cyan hover:underline">https://github.com/zorgnax/unic0rn</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Brute Force */}
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-xl font-bold text-text-secondary">## Brute Force Mask</h3>
+                                <div className="bg-cyber-black/50 border border-white/10 rounded-lg p-4 font-mono text-sm text-neon-cyan overflow-x-auto">
+                                    hashcat -a 3 -m 0 hash.txt ?a?a?a?a?a?a
+                                </div>
+                            </div>
+
+                            {/* Reviewing */}
+                            <div className="space-y-4 pt-8">
+                                <h3 className="text-xl font-bold text-text-secondary">## Reviewing cracked passwords</h3>
+                                <div className="bg-cyber-black/50 border border-white/10 rounded-lg p-4 font-mono text-sm text-neon-cyan overflow-x-auto">
+                                    hashcat -m 0 hash.txt --show
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         // Default / Placeholder for empty or unconnected sections
         return (
             <div className="flex flex-col items-center justify-center min-h-[50vh] text-text-dim">
