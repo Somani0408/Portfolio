@@ -268,6 +268,39 @@ const Resources = () => {
             );
         }
 
+        if (activeSlug === 'vulnhub' || (section === 'writeups' && subcategory === 'vulnhub')) {
+            return (
+                <div className="space-y-8">
+                    <div className="flex items-center gap-2 text-sm text-text-dim">
+                        <span>Pentest Everything</span>
+                        <FiChevronRight className="text-xs" />
+                        <span>Writeups</span>
+                        <FiChevronRight className="text-xs" />
+                        <span className="text-white font-medium">VulnHub</span>
+                    </div>
+
+                    <div className="space-y-4">
+                        <h1 className="text-4xl font-display font-bold text-white">VulnHub</h1>
+                        <a href="#dc-1" className="block text-xl font-bold text-text-secondary hover:text-neon-cyan transition-colors">
+                            <span className="text-neon-cyan">#</span> DC-1 Walkthrough
+                        </a>
+                    </div>
+
+                    <div className="space-y-6">
+                        <div id="dc-1">
+                            <WriteupCard
+                                platform="VulnHub"
+                                title="DC-1 Walkthrough"
+                                description="A beginner-friendly boot-to-root CTF involving Drupal exploitation and standard privilege escalation vectors."
+                                image="/writeups/VulnHub/dc-1.png"
+                                link="/resources/writeups/vulnhub/dc-1"
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         if (activeSlug === 'awareness') {
             return (
                 <div className="space-y-12 max-w-4xl">

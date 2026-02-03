@@ -9,6 +9,8 @@ import Lab from './pages/Lab';
 import Contact from './components/Contact';
 import LazyAdminWriteup from './pages/writeups/LazyAdminWriteup';
 
+import DC1Writeup from './pages/writeups/DC1Writeup';
+
 function App() {
   return (
     <HelmetProvider>
@@ -23,6 +25,7 @@ function App() {
             <Route path="lab" element={<Lab />} />
             <Route path="contact" element={<Contact />} />
             <Route path="resources/writeups/tryhackme/lazy-admin" element={<LazyAdminWriteup />} />
+            <Route path="resources/writeups/vulnhub/dc-1" element={<DC1Writeup />} />
           </Route>
         </Routes>
       </Router>
