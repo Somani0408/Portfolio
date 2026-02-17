@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import AdvancedCyberBackground from '../components/background/AdvancedCyberBackground';
+import DigitalSynapse from '../components/background/DigitalSynapse';
 import TerminalIntro from '../components/TerminalIntro';
 import { AnimatePresence } from 'framer-motion';
 
@@ -18,7 +18,9 @@ const Layout = () => {
             {!showIntro && (
                 <>
                     {/* Background */}
-                    <AdvancedCyberBackground />
+                    <DigitalSynapse />
+
+                    <Navbar />
 
                     <Navbar />
 
