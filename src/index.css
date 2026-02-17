@@ -1,10 +1,53 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
 
 @layer base {
   body {
-    background-image: radial-gradient(circle at 50% 0%, #1a1d26 0%, #050505 60%);
-    min-height: 100vh;
+    background-color: #070b14;
+    color: white;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    transform: translateY(-20px) translateX(10px);
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes binaryFall {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(110vh);
   }
 }
 

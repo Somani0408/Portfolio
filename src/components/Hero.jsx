@@ -17,9 +17,14 @@ const Hero = () => {
       {/* Background */}
       <div className="absolute inset-0 bg-transparent z-0" />
 
+      {/* Scanning Light Effect */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-neon-cyan/5 to-transparent skew-x-12 animate-[scan-line_10s_linear_infinite]" />
+      </div>
+
       {/* Radial Glow for Depth */}
-      <div className="absolute left-[-10%] top-[20%] w-[500px] h-[500px] bg-neon-cyan/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute right-[-10%] bottom-[20%] w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute left-[-10%] top-[20%] w-[500px] h-[500px] bg-neon-cyan/20 blur-[120px] rounded-full pointer-events-none opacity-40" />
+      <div className="absolute right-[-10%] bottom-[20%] w-[500px] h-[500px] bg-purple-500/20 blur-[120px] rounded-full pointer-events-none opacity-40" />
 
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 w-full px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 items-center">
@@ -40,6 +45,7 @@ const Hero = () => {
             <span className="bg-gradient-to-r from-neon-cyan to-blue-500 text-transparent bg-clip-text drop-shadow-[0_0_10px_rgba(0,240,255,0.3)]">
               Somani
             </span>
+            <span className="inline-block w-3 h-3 md:w-4 md:h-4 bg-neon-cyan rounded-full ml-2 animate-pulse shadow-[0_0_10px_rgba(0,240,255,0.8)] align-baseline"></span>
           </h1>
 
           <p className="mt-4 text-xl text-gray-400 font-mono h-8 flex items-center mb-8">
