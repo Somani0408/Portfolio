@@ -13,6 +13,7 @@ export default {
         "cyber-light-gray": "#1e1e1e", // Borders/Accents
         "neon-cyan": "#00f0ff", // Primary accent
         "neon-cyan-dim": "rgba(0, 240, 255, 0.1)", // Dim accent for backgrounds
+        "neon-cyan-hover": "#33f3ff", // Lighter cyan for hover
         "neon-red": "#ff003c", // Secondary accent (Offensive/Alert)
         "text-primary": "#f8f8f2",
         "text-secondary": "#a0a0a0",
@@ -24,8 +25,9 @@ export default {
         display: ['"Orbitron"', 'sans-serif'],
       },
       boxShadow: {
-        'neon': '0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3)',
-        'neon-hover': '0 0 20px rgba(0, 240, 255, 0.8), 0 0 40px rgba(0, 240, 255, 0.4)',
+        'neon': '0 0 5px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3)',
+        'neon-strong': '0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.4)',
+        'neon-hover': '0 0 15px rgba(0, 240, 255, 0.7), 0 0 30px rgba(0, 240, 255, 0.4)',
         'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
         'glass-inset': 'inset 0 0 20px rgba(255, 255, 255, 0.05)',
       },
@@ -36,11 +38,16 @@ export default {
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
+        'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
         glow: {
           '0%': { boxShadow: '0 0 5px rgba(0, 240, 255, 0.2)' },
           '100%': { boxShadow: '0 0 20px rgba(0, 240, 255, 0.6)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         }
       }
     },

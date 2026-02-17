@@ -2,13 +2,15 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import BackgroundCanvas from '../components/BackgroundCanvas';
 
 const Layout = () => {
     return (
         <div className="min-h-screen flex flex-col font-sans text-text-primary antialiased">
             {/* Background */}
-            <div className="fixed inset-0 bg-cyber-black -z-50" />
-            <div className="fixed inset-0 bg-cyber-gradient -z-40 opacity-80" />
+            <BackgroundCanvas />
+            <div className="fixed inset-0 bg-cyber-black/90 -z-40" />
+            <div className="fixed inset-0 bg-cyber-gradient -z-30 opacity-60" />
 
             <Navbar />
 

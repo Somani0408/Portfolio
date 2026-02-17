@@ -57,23 +57,16 @@ const Navbar = () => {
                                         to={link.path}
                                         className={({ isActive }) => `
                                     relative px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition-all duration-300
-                                    ${isActive ? 'text-cyber-black' : 'text-text-secondary hover:text-white'}
+                                    ${isActive
+                                                ? 'text-neon-cyan shadow-[0_0_15px_rgba(0,240,255,0.3)] bg-neon-cyan/10 border border-neon-cyan/20'
+                                                : 'text-text-secondary hover:text-white hover:bg-white/5'}
                                 `}
                                     >
                                         {({ isActive }) => (
-                                            <>
-                                                {isActive && (
-                                                    <motion.div
-                                                        layoutId="activeTab"
-                                                        className="absolute inset-0 bg-neon-cyan rounded-full"
-                                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                                    />
-                                                )}
-                                                <span className={`relative z-10 flex items-center gap-2 ${isActive ? 'text-cyber-black' : ''}`}>
-                                                    <link.icon className="text-lg" />
-                                                    {link.name}
-                                                </span>
-                                            </>
+                                            <span className="relative z-10 flex items-center gap-2">
+                                                <link.icon className={`text-lg transition-colors duration-300 ${isActive ? 'text-neon-cyan drop-shadow-[0_0_5px_rgba(0,240,255,0.8)]' : ''}`} />
+                                                {link.name}
+                                            </span>
                                         )}
                                     </NavLink>
                                 </li>
