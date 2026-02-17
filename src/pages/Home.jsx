@@ -40,10 +40,16 @@ const Home = () => {
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-7xl font-display font-bold leading-tight">
               HARSHIT <br />
-              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#0ea5e9] via-[#3b82f6] to-[#9333ea] animate-gradient-x drop-shadow-lg pb-2">
+              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#0099ff] to-[#9d00ff] animate-gradient-x drop-shadow-[0_0_15px_rgba(0,240,255,0.4)] pb-2 hover:animate-pulse">
                 SOMANI
               </span>
             </h1>
+
+            {/* System Online Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono font-bold tracking-wider mb-2">
+              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
+              SYSTEM ONLINE
+            </div>
             <p className="text-xl text-text-primary font-bold">
               SOC Analyst | Penetration Tester | Red Teamer
             </p>

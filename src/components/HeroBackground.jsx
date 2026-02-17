@@ -18,56 +18,128 @@ const HeroBackground = () => {
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Layer 3: Floating Particles System
-        const particles = [];
-        const particleCount = 35; // Minimal count for "clean" look
+        // Configuration
+        const config = {
+            particleCount: 80, // Number of nodes
+            connectionDistance: 120, // Distance to connect
+            mouseDistance: 200, // Distance for mouse interaction
+            baseColor: 'rgba(0, 240, 255, 0.5)', // Cyan
+            accentColor: 'rgba(147, 51, 234, 0.5)', // Purple
+        };
 
+        // Mouse State
+        const mouse = { x: null, y: null };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        // Particle Class
         class Particle {
             constructor() {
-                this.reset();
-            }
-
-            reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5; // Tiny dots
-                this.speedX = (Math.random() - 0.5) * 0.15; // Very slow horizontal
-                this.speedY = (Math.random() - 0.5) * 0.15; // Very slow vertical
-                this.opacity = Math.random() * 0.4 + 0.1; // Low opacity
-                // Cyan or Purple (matches requested colors)
-                this.color = Math.random() > 0.6 ? 'rgba(0, 240, 255,' : 'rgba(147, 51, 234,';
+                this.vx = (Math.random() - 0.5) * 0.5; // Velocity X
+                this.vy = (Math.random() - 0.5) * 0.5; // Velocity Y
+                this.size = Math.random() * 2 + 1;
+                this.color = Math.random() > 0.5 ? config.baseColor : config.accentColor;
             }
 
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
+                this.x += this.vx;
+                this.y += this.vy;
 
-                // Wrap around screen
-                if (this.x < 0) this.x = canvas.width;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.y < 0) this.y = canvas.height;
-                if (this.y > canvas.height) this.y = 0;
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Mouse Interaction
+                if (mouse.x != null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < config.mouseDistance) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (config.mouseDistance - distance) / config.mouseDistance;
+                        const directionX = forceDirectionX * force * 0.5; // Push strength
+                        const directionY = forceDirectionY * force * 0.5;
+
+                        this.vx -= directionX;
+                        this.vy -= directionY;
+                    }
+                }
             }
 
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `${this.color}${this.opacity})`;
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 1; // Base alpha for particles
                 ctx.fill();
             }
         }
 
-        for (let i = 0; i < particleCount; i++) {
+        // Initialize Particles
+        const particles = [];
+        for (let i = 0; i < config.particleCount; i++) {
             particles.push(new Particle());
         }
 
+        // Animation Loop
         const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear Canvas
 
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            // Update and Draw Particles
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw Connections
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < config.connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = particles[i].color; // Use particle color for line
+                        ctx.lineWidth = 0.5;
+                        ctx.globalAlpha = 1 - distance / config.connectionDistance; // Fade out by distance
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1; // Reset alpha
+                    }
+                }
+            }
+
+            // Draw Mouse Connection
+            if (mouse.x != null) {
+                for (let i = 0; i < particles.length; i++) {
+                    const dx = particles[i].x - mouse.x;
+                    const dy = particles[i].y - mouse.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < config.mouseDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'; // Mouse lines are white
+                        ctx.lineWidth = 0.5;
+                        ctx.globalAlpha = 1 - distance / config.mouseDistance;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
 
             animationFrameId = requestAnimationFrame(animate);
         };
@@ -81,37 +153,15 @@ const HeroBackground = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50 select-none">
+        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50 select-none bg-[#05060A]">
+            {/* Base Gradient - Stronger to support the glow lines */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020305] via-[#05060A] to-[#0A0F1C] opacity-90" />
 
-            {/* Layer 1: Deep Dark Gradient Base */}
-            {/* From #05060A to #0A0F1C */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#05060A] to-[#0A0F1C]" />
+            {/* Canvas Layer */}
+            <canvas ref={canvasRef} className="absolute inset-0 block" />
 
-            {/* Layer 2: Animated Subtle Grid */}
-            {/* Opacity 5-8% max, faint cyan (#00f0ff) */}
-            <div
-                className="absolute inset-0 opacity-[0.06]"
-                style={{
-                    backgroundImage: `
-            linear-gradient(to right, #00f0ff 1px, transparent 1px),
-            linear-gradient(to bottom, #00f0ff 1px, transparent 1px)
-          `,
-                    backgroundSize: '80px 80px', // Larger grid for cleaner look
-                    maskImage: 'radial-gradient(circle at 50% 30%, black 50%, transparent 100%)' // Fade out edges
-                }}
-            />
-
-            {/* Layer 3: Canvas Particles (Floating) */}
-            <canvas ref={canvasRef} className="absolute inset-0" />
-
-            {/* Layer 4: Soft Radial Glow (Behind Profile Image Position) */}
-            {/* Positioned approximately where the profile image is on desktop (right side) */}
-            {/* On mobile it centers. Using a generic center-right glow usually works best */}
-            <div className="absolute top-1/2 right-0 md:right-32 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
-
-            {/* Secondary softer glow for balance */}
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/5 rounded-full blur-[150px] pointer-events-none" />
-
+            {/* Vignette - Stronger focus */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] pointer-events-none" />
         </div>
     );
 };
