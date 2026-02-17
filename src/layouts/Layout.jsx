@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import CyberBackground from '../components/CyberBackground';
-import ScanningLine from '../components/ScanningLine';
+import CyberBackground from '../components/background/CyberBackground';
 import TerminalIntro from '../components/TerminalIntro';
 import { AnimatePresence } from 'framer-motion';
 
@@ -11,7 +10,7 @@ const Layout = () => {
     const [showIntro, setShowIntro] = useState(true);
 
     return (
-        <div className="min-h-screen flex flex-col font-sans text-text-primary antialiased bg-[#0b0f14]">
+        <div className="min-h-screen flex flex-col font-sans text-text-primary antialiased bg-[#050505]">
             <AnimatePresence>
                 {showIntro && <TerminalIntro onComplete={() => setShowIntro(false)} />}
             </AnimatePresence>
@@ -20,8 +19,6 @@ const Layout = () => {
                 <>
                     {/* Background */}
                     <CyberBackground />
-                    <ScanningLine />
-                    {/* Removed blocking backgrounds to let CyberBackground show */}
 
                     <Navbar />
 

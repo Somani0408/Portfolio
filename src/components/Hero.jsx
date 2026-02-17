@@ -17,6 +17,10 @@ const Hero = () => {
       {/* Background */}
       <div className="absolute inset-0 bg-transparent z-0" />
 
+      {/* Radial Glow for Depth */}
+      <div className="absolute left-[-10%] top-[20%] w-[500px] h-[500px] bg-neon-cyan/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute right-[-10%] bottom-[20%] w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full pointer-events-none" />
+
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 w-full px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 items-center">
 
