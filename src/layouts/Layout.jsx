@@ -11,8 +11,8 @@ const Layout = () => {
             {/* Background */}
             <CyberBackground />
             <ScanningLine />
-            <div className="fixed inset-0 bg-cyber-black/90 -z-40" />
-            <div className="fixed inset-0 bg-cyber-gradient -z-30 opacity-60" />
+            <div className="fixed inset-0 bg-[#0b0f14]/95 -z-40" />
+            <div className="fixed inset-0 bg-cyber-gradient -z-30 opacity-40" />
 
             <Navbar />
 
