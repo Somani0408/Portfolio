@@ -7,6 +7,8 @@ import Card from '../components/ui/Card';
 import Contact from '../components/Contact';
 
 
+import HeroBackground from '../components/HeroBackground';
+
 const Home = () => {
   const stats = [
     { label: 'TryHackMe Rooms', value: '50+', icon: FiTarget },
@@ -16,16 +18,19 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-24 pb-20">
+    <div className="flex flex-col gap-24 pb-20 overflow-x-hidden"> {/* Added overflow handling */}
       {/* Hero Section */}
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20 min-h-screen lg:min-h-screen">
+      <section className="relative flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20 min-h-screen lg:min-h-screen">
+
+        {/* NEW: Layered Cyber Background */}
+        <HeroBackground />
 
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex-1 space-y-8 text-center lg:text-left"
+          className="flex-1 space-y-8 text-center lg:text-left z-10"
         >
           <div className="flex items-center justify-center lg:justify-start gap-4">
             <Badge variant="cyan">CYBER SECURITY STUDENT</Badge>
@@ -35,8 +40,12 @@ const Home = () => {
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-7xl font-display font-bold leading-tight">
               HARSHIT <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-blue-500 to-purple-600 animate-pulse-slow">
+              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x drop-shadow-[0_0_10px_rgba(0,240,255,0.3)]">
                 SOMANI
+                {/* Subtle Text Glow Behind */}
+                <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 blur-lg -z-10" aria-hidden="true">
+                  SOMANI
+                </span>
               </span>
             </h1>
             <p className="text-xl text-text-primary font-bold">
@@ -63,14 +72,27 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex-1 relative w-full max-w-sm md:max-w-md aspect-square flex justify-center lg:justify-end"
+          className="flex-1 relative w-full max-w-sm md:max-w-md aspect-square flex justify-center lg:justify-end z-10"
         >
           <div className="relative w-72 h-72 md:w-96 md:h-96 group">
             {/* Glow Behind */}
-            <div className="absolute -inset-4 bg-gradient-to-br from-neon-cyan to-blue-600 rounded-full opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500" />
+            <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/30 to-blue-600/30 rounded-full opacity-40 blur-2xl group-hover:opacity-60 transition-opacity duration-500 animate-pulse-slow" />
+
+            {/* Rotating Cyber Ring 1 (Outer) */}
+            <div className="absolute -inset-8 border border-cyan-500/20 rounded-full border-dashed animate-[spin_10s_linear_infinite]" />
+
+            {/* Rotating Cyber Ring 2 (Inner Reverse) */}
+            <div className="absolute -inset-2 border border-blue-500/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+
+            {/* Static Tech Accents */}
+            <div className="absolute -top-4 left-1/2 w-1 h-3 bg-cyan-500/50" />
+            <div className="absolute -bottom-4 left-1/2 w-1 h-3 bg-cyan-500/50" />
+            <div className="absolute top-1/2 -left-4 w-3 h-1 bg-cyan-500/50" />
+            <div className="absolute top-1/2 -right-4 w-3 h-1 bg-cyan-500/50" />
+
 
             {/* Image Container */}
-            <div className="relative w-full h-full rounded-full p-2 border border-white/10 bg-white/5 backdrop-blur-sm shadow-glass overflow-hidden">
+            <div className="relative w-full h-full rounded-full p-2 border border-white/10 bg-white/5 backdrop-blur-sm shadow-glass overflow-hidden z-10">
               <img
                 src="/profile.jpg"
                 alt="Harshit Somani"
@@ -81,10 +103,6 @@ const Home = () => {
                 }}
               />
             </div>
-
-            {/* Orbiting Decor */}
-            <div className="absolute -inset-8 border border-neon-cyan/20 rounded-full animate-[spin_12s_linear_infinite]" />
-            <div className="absolute -inset-2 border border-blue-500/10 rounded-full animate-[spin_8s_linear_infinite_reverse]" />
           </div>
         </motion.div>
       </section>
