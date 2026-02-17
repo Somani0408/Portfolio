@@ -48,6 +48,9 @@ const Hero = () => {
 
           {/* Exploit Chain Logic Visualization */}
           <div className="mb-10">
+            <h3 className="text-sm uppercase tracking-widest text-neon-cyan/80 mb-3 font-semibold text-shadow-neon">
+              Offensive Security Workflow
+            </h3>
             <ExploitChain />
           </div>
 

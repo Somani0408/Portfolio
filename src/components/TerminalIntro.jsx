@@ -7,6 +7,8 @@ const TerminalIntro = ({ onComplete }) => {
         "Initializing system...",
         "Loading Harshit Somani...",
         "Role: Full Stack Developer",
+        "Role: Cybersecurity Student",
+        "Specialization: Penetration Testing",
         "Security Mode: Active",
         "Access Granted."
     ];

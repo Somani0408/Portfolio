@@ -195,12 +195,12 @@ const CyberBackground = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 z-[-50] overflow-hidden pointer-events-none bg-[#0b0f14]">
+        <div className="fixed inset-0 z-[-10] overflow-hidden pointer-events-none bg-[#0b0f14]">
             {/* Canvas for Animation */}
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-40" />
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-60" />
 
             {/* Overlay Gradient for Fade-out/Depth - Balanced Dark Mode */}
-            <div className="absolute inset-0 bg-radial-gradient from-transparent to-[#0b0f14] opacity-90" />
+            <div className="absolute inset-0 bg-radial-gradient from-transparent to-[#0b0f14] opacity-40" />
 
             {/* Floating Code Snippets (DOM for blur/text effects) */}
             {codeSnippets.map((snippet) => (

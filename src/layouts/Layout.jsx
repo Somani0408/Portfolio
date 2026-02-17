@@ -21,8 +21,7 @@ const Layout = () => {
                     {/* Background */}
                     <CyberBackground />
                     <ScanningLine />
-                    <div className="fixed inset-0 bg-[#0b0f14]/90 -z-40" />
-                    <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_#111827_0%,_#0b0f14_100%)] -z-30 opacity-60" />
+                    {/* Removed blocking backgrounds to let CyberBackground show */}
 
                     <Navbar />
 
