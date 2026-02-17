@@ -40,12 +40,8 @@ const Home = () => {
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-7xl font-display font-bold leading-tight">
               HARSHIT <br />
-              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x drop-shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#0ea5e9] via-[#3b82f6] to-[#9333ea] animate-gradient-x drop-shadow-lg pb-2">
                 SOMANI
-                {/* Subtle Text Glow Behind */}
-                <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 blur-lg -z-10" aria-hidden="true">
-                  SOMANI
-                </span>
               </span>
             </h1>
             <p className="text-xl text-text-primary font-bold">
