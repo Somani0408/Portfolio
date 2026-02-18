@@ -16,7 +16,7 @@ const Layout = () => {
             </AnimatePresence>
 
             {/* Main Content (Always rendered, revealed when intro fades) */}
-            <div className={`transition-opacity duration-1000 ${showIntro ? 'opacity-0' : 'opacity-100'}`}>
+            <div className={`transition-opacity duration-1000 ${showIntro ? 'opacity-0' : 'opacity-100'} flex flex-col min-h-screen`}>
                 {/* Background */}
                 <DigitalSynapse />
 

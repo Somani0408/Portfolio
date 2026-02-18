@@ -41,7 +41,7 @@ const Home = () => {
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-7xl font-display font-bold leading-tight">
               HARSHIT <br />
-              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#0099ff] to-[#9d00ff] animate-gradient-x drop-shadow-[0_0_15px_rgba(0,240,255,0.4)] pb-2 hover:animate-pulse">
+              <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#00e0ff] via-[#0090ff] to-[#8000ff] animate-gradient-x drop-shadow-[0_2px_10px_rgba(0,240,255,0.3)] pb-2 hover:animate-pulse">
                 SOMANI
               </span>
             </h1>

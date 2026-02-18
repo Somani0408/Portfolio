@@ -23,8 +23,8 @@ const HeroBackground = () => {
             particleCount: 80, // Number of nodes
             connectionDistance: 120, // Distance to connect
             mouseDistance: 200, // Distance for mouse interaction
-            baseColor: 'rgba(0, 240, 255, 0.5)', // Cyan
-            accentColor: 'rgba(147, 51, 234, 0.5)', // Purple
+            baseColor: 'rgba(0, 240, 255, 0.2)', // Cyan - Reduced opacity
+            accentColor: 'rgba(147, 51, 234, 0.2)', // Purple - Reduced opacity
         };
 
         // Mouse State
@@ -155,7 +155,7 @@ const HeroBackground = () => {
     return (
         <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50 select-none bg-[#05060A]">
             {/* Base Gradient - Stronger to support the glow lines */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#020305] via-[#05060A] to-[#0A0F1C] opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020305] via-[#05060A] to-[#0A0F1C] opacity-75" />
 
             {/* Canvas Layer */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
