@@ -4,6 +4,7 @@ import { FiExternalLink, FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button';
 import Badge from './ui/Badge';
+import Card from './ui/Card';
 
 const WriteupCard = ({ title, description, platform, image, link }) => {
     const navigate = useNavigate();
@@ -18,10 +19,10 @@ const WriteupCard = ({ title, description, platform, image, link }) => {
     };
 
     return (
-        <motion.div
+        <Card
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="group relative overflow-hidden rounded-xl bg-cyber-black border border-white/5 hover:border-neon-cyan/50 transition-colors duration-300"
+            className="p-0 transition-colors duration-300"
         >
             <div className="flex flex-col md:flex-row h-full">
                 {/* Left: Image */}
@@ -65,10 +66,7 @@ const WriteupCard = ({ title, description, platform, image, link }) => {
                     </div>
                 </div>
             </div>
-
-            {/* Hover Glow */}
-            <div className="absolute inset-0 border-2 border-neon-cyan/0 group-hover:border-neon-cyan/20 rounded-xl pointer-events-none transition-all duration-300" />
-        </motion.div>
+        </Card>
     );
 };
 

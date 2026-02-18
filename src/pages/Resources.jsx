@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FiSearch, FiChevronDown, FiChevronRight, FiFolder, FiFileText, FiHash, FiMonitor, FiGlobe, FiServer, FiLayers, FiCode, FiTerminal, FiExternalLink } from 'react-icons/fi';
 import WriteupCard from '../components/WriteupCard';
 import TableOfContents from '../components/TableOfContents';
+import Card from '../components/ui/Card';
 
 const Resources = () => {
     const { section, subcategory } = useParams();
@@ -319,22 +320,22 @@ const Resources = () => {
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                <Card>
                                     <h3 className="text-xl font-bold text-white mb-3">Phishing Defense</h3>
                                     <p className="text-sm">Recognizing sophisticated social engineering attacks and email-based threats before they compromise systems.</p>
-                                </div>
-                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                </Card>
+                                <Card>
                                     <h3 className="text-xl font-bold text-white mb-3">Human Behavior</h3>
                                     <p className="text-sm">Understanding how potential attackers exploit human psychology and trust to bypass technical controls.</p>
-                                </div>
-                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                </Card>
+                                <Card>
                                     <h3 className="text-xl font-bold text-white mb-3">Email Safety</h3>
                                     <p className="text-sm">Best practices for handling attachments, links, and verifying sender identity in daily communications.</p>
-                                </div>
-                                <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-all">
+                                </Card>
+                                <Card>
                                     <h3 className="text-xl font-bold text-white mb-3">Security Culture</h3>
                                     <p className="text-sm">Fostering an environment where security is a shared responsibility and reporting incidents is encouraged.</p>
-                                </div>
+                                </Card>
                             </div>
 
                             <div className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-neon-cyan/10 to-transparent border border-neon-cyan/20">

@@ -29,23 +29,20 @@ const Lab = () => {
                             <Badge variant="cyan">Ongoing</Badge>
                         </div>
                         <p className="text-neon-cyan/80 text-sm mb-4">TryHackMe & VulnHub</p>
-                        <ul className="space-y-2 text-text-secondary text-sm">
-                            <li className="flex items-start gap-2">
-                                <span className="text-neon-cyan mt-1">▹</span>
-                                Completed 50+ TryHackMe rooms focused on web exploitation, Linux privilege escalation, and defensive fundamentals.
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-neon-cyan mt-1">▹</span>
-                                Practiced attacking vulnerable machines in controlled lab environments (VulnHub).
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-neon-cyan mt-1">▹</span>
-                                Hands-on usage of tools like Nmap, Burp Suite, Metasploit, Gobuster, and Linux post-exploitation techniques.
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-neon-cyan mt-1">▹</span>
-                                Focused on learning attacker mindset and SOC-relevant detection concepts.
-                            </li>
+                        <ul className="space-y-4 border-l border-neon-cyan/20 ml-2 pl-6 relative">
+                            {[
+                                "Completed 50+ TryHackMe rooms focused on web exploitation, Linux privilege escalation, and defensive fundamentals.",
+                                "Practiced attacking vulnerable machines in controlled lab environments (VulnHub).",
+                                "Hands-on usage of tools like Nmap, Burp Suite, Metasploit, Gobuster, and Linux post-exploitation techniques.",
+                                "Focused on learning attacker mindset and SOC-relevant detection concepts."
+                            ].map((item, i) => (
+                                <li key={i} className="relative group">
+                                    <span className="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-cyber-dark border border-neon-cyan group-hover:bg-neon-cyan group-hover:shadow-[0_0_10px_rgba(0,240,255,0.8)] transition-all duration-300" />
+                                    <p className="text-text-secondary text-sm group-hover:text-white transition-colors duration-300">
+                                        {item}
+                                    </p>
+                                </li>
+                            ))}
                         </ul>
                     </Card>
                 </div>

@@ -11,6 +11,7 @@ const Layout = () => {
 
     return (
         <div className="min-h-screen flex flex-col font-sans text-text-primary antialiased bg-transparent relative">
+            <div className="bg-noise" />
             <AnimatePresence>
                 {showIntro && <TerminalIntro onComplete={() => setShowIntro(false)} />}
             </AnimatePresence>
