@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiDownload, FiActivity, FiCode, FiShield, FiTarget } from 'react-icons/fi';
+import { SiTryhackme } from 'react-icons/si';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import Card from '../components/ui/Card';
@@ -59,12 +60,15 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 flex-wrap"> {/* added flex-wrap just in case */}
             <Button variant="primary" icon={FiArrowRight} onClick={() => window.location.href = '/projects'}>
               View Projects
             </Button>
             <Button variant="secondary" icon={FiDownload} onClick={() => window.open('https://www.linkedin.com/in/harshit-somani-40a700351/', '_blank')}>
               Contact Me
+            </Button>
+            <Button variant="primary" icon={SiTryhackme} onClick={() => window.open('https://tryhackme.com/p/harshitsomani2005', '_blank', 'noopener,noreferrer')}>
+              TryHackMe Profile
             </Button>
           </div>
         </motion.div>
