@@ -1,12 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiCpu } from 'react-icons/fi';
+import { BsRobot } from 'react-icons/bs';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 
 const Projects = () => {
     const projects = [
+        {
+            title: "Zenox AI",
+            date: "Present",
+            description: "Next-generation AI assistant focused on intelligent automation, health routines, productivity optimization, and secure AI interaction. Built as an evolving system integrating AI reasoning, automation workflows, and future wearable integration.",
+            tech: ["AI", "Machine Learning", "Full Stack", "Automation", "Cybersecurity"],
+            status: "Ongoing",
+            github: "#",
+            demo: "#",
+            icon: BsRobot
+        },
         {
             title: "Nyay-AI (Legal AI Assistant)",
             date: "Completed",
@@ -57,35 +68,38 @@ const Projects = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                {projects.map((project, index) => (
-                    <Card key={index} className="flex flex-col h-full hover:border-neon-cyan/50 transition-colors">
-                        <div className="flex justify-between items-start mb-4">
-                            <div className="p-3 rounded-lg bg-neon-cyan/5 text-neon-cyan">
-                                <FiCpu className="text-2xl" />
+                {projects.map((project, index) => {
+                    const Icon = project.icon || FiCpu;
+                    return (
+                        <Card key={index} className="flex flex-col h-full hover:border-neon-cyan/50 transition-colors">
+                            <div className="flex justify-between items-start mb-4">
+                                <div className="p-3 rounded-lg bg-neon-cyan/5 text-neon-cyan">
+                                    <Icon className="text-2xl" />
+                                </div>
+                                <Badge variant={project.status === 'Completed' ? 'cyan' : 'gray'}>
+                                    {project.status === 'Ongoing' ? 'Ongoing' : project.date}
+                                </Badge>
                             </div>
-                            <Badge variant={project.status === 'Completed' ? 'cyan' : 'gray'}>
-                                {project.date}
-                            </Badge>
-                        </div>
 
-                        <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                        <p className="text-text-secondary mb-6 flex-grow">{project.description}</p>
+                            <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                            <p className="text-text-secondary mb-6 flex-grow">{project.description}</p>
 
-                        <div className="flex flex-wrap gap-2 mb-6">
-                            {project.tech.map(t => (
-                                <span key={t} className="text-xs font-mono text-neon-cyan/80 bg-neon-cyan/5 px-2 py-1 rounded border border-neon-cyan/10 hover:border-neon-cyan/50 hover:bg-neon-cyan/10 hover:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all duration-300 cursor-default">
-                                    {t}
-                                </span>
-                            ))}
-                        </div>
+                            <div className="flex flex-wrap gap-2 mb-6">
+                                {project.tech.map(t => (
+                                    <span key={t} className="text-xs font-mono text-neon-cyan/80 bg-neon-cyan/5 px-2 py-1 rounded border border-neon-cyan/10 hover:border-neon-cyan/50 hover:bg-neon-cyan/10 hover:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all duration-300 cursor-default">
+                                        {t}
+                                    </span>
+                                ))}
+                            </div>
 
-                        <div className="flex gap-4 pt-4 border-t border-white/5">
-                            <a href={project.github} className="flex items-center gap-2 text-text-secondary hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
-                                <FiGithub /> <span className="text-sm">GitHub</span>
-                            </a>
-                        </div>
-                    </Card>
-                ))}
+                            <div className="flex gap-4 pt-4 border-t border-white/5">
+                                <a href={project.github} className="flex items-center gap-2 text-text-secondary hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
+                                    <FiGithub /> <span className="text-sm">GitHub</span>
+                                </a>
+                            </div>
+                        </Card>
+                    );
+                })}
             </div>
         </div>
     );
