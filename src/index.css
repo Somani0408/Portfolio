@@ -2,8 +2,38 @@
 
 @layer base {
   body {
-    background-color: #070b14;
-    color: white;
+    background-color: #f6f7f8;
+    color: #0f172a;
+  }
+
+  .dark body {
+    background-color: #101c22;
+    color: #f1f5f9;
+  }
+}
+
+@layer utilities {
+  .typewriter h2 {
+    overflow: hidden;
+    border-right: .15em solid #13a4ec;
+    white-space: nowrap;
+    margin: 0;
+    letter-spacing: .15em;
+    animation:
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+
+    from,
+    to {
+      border-color: transparent
+    }
+
+    50% {
+      border-color: #13a4ec;
+    }
   }
 }
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import NavbarModern from '../components/ui/NavbarModern';
 import Footer from '../components/Footer';
-import DigitalSynapse from '../components/background/DigitalSynapse';
+import BackgroundEffects from '../components/ui/BackgroundEffects';
 import TerminalIntro from '../components/TerminalIntro';
 import { AnimatePresence } from 'framer-motion';
 
@@ -19,9 +19,9 @@ const Layout = () => {
             {/* Main Content (Always rendered, revealed when intro fades) */}
             <div className={`transition-opacity duration-1000 ${showIntro ? 'opacity-0' : 'opacity-100'} flex flex-col min-h-screen`}>
                 {/* Background */}
-                <DigitalSynapse />
+                <BackgroundEffects />
 
-                <Navbar />
+                <NavbarModern />
 
                 <main className="flex-grow pt-28 container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <Outlet />
