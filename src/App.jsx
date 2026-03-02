@@ -9,6 +9,7 @@ import Lab from './pages/Lab';
 import Contact from './components/Contact';
 import SystemInterface from './pages/SystemInterface';
 import LazyAdminWriteup from './pages/writeups/LazyAdminWriteup';
+import CommandCenter from './pages/CommandCenter';
 
 import DC1Writeup from './pages/writeups/DC1Writeup';
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="system-interface" element={<SystemInterface />} />
             <Route path="resources/writeups/tryhackme/lazy-admin" element={<LazyAdminWriteup />} />
             <Route path="resources/writeups/vulnhub/dc-1" element={<DC1Writeup />} />
+            <Route path="command-center" element={<CommandCenter />} />
           </Route>
         </Routes>
       </Router>

@@ -127,3 +127,187 @@
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
+
+/* -------------------------------------------------------------------------- */
+/* Cyber Command Center specific scoped styles                                */
+/* -------------------------------------------------------------------------- */
+
+.cyber-command-module .hexagon-clip {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.cyber-command-module .hexagon-border {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(45deg, #13a4ec, #f59e0b);
+  padding: 2px;
+}
+
+.cyber-command-module .glass-panel {
+  background: rgba(16, 28, 34, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(19, 164, 236, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.cyber-command-module .glass-panel-neural {
+  background: rgba(10, 15, 20, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(19, 164, 236, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cyber-command-module .connection-line {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(19, 164, 236, 0.1), rgba(19, 164, 236, 0.5), rgba(19, 164, 236, 0.1));
+  height: 1px;
+  transform-origin: left center;
+  opacity: 0.6;
+  overflow: hidden;
+}
+
+.cyber-command-module .scanner-line {
+  animation: ccm-scan-line 3s linear infinite;
+  background: linear-gradient(to bottom, transparent, #13a4ec, transparent);
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+@keyframes ccm-scan-line {
+  0% {
+    top: -100%;
+  }
+
+  100% {
+    top: 200%;
+  }
+}
+
+.cyber-command-module .node-pulse {
+  box-shadow: 0 0 0 0 rgba(19, 164, 236, 0.7);
+  animation: pulse-cyan 2s infinite;
+}
+
+@keyframes pulse-cyan {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(19, 164, 236, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(19, 164, 236, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(19, 164, 236, 0);
+  }
+}
+
+.cyber-command-module .node-active {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4), inset 0 0 10px rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+}
+
+.cyber-command-module .data-packet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #13a4ec;
+  border-radius: 2px;
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px #13a4ec;
+  animation: packet-travel 3s linear infinite;
+}
+
+.cyber-command-module .data-packet-warning {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+@keyframes packet-travel {
+  0% {
+    left: -10%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+}
+
+.cyber-command-module .tech-bg-meta {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(19, 164, 236, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(19, 164, 236, 0.05) 1px, transparent 1px);
+}
+
+.cyber-command-module .tech-bg-neural {
+  background-size: 60px 60px;
+  background-image: linear-gradient(to right, rgba(19, 164, 236, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(19, 164, 236, 0.03) 1px, transparent 1px);
+}
+
+.cyber-command-module .sys-scanline {
+  width: 100%;
+  height: 100px;
+  z-index: 10;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(37, 209, 244, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0.1;
+  position: absolute;
+  bottom: 100%;
+  animation: scanline-vert 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline-vert {
+  0% {
+    bottom: 100%;
+  }
+
+  100% {
+    bottom: -100%;
+  }
+}
+
+.cyber-command-module .archive-scanline {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+  background-size: 100% 4px;
+  pointer-events: none;
+  position: absolute;
+  /* Changed to absolute to restrict to container */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  opacity: 0.05;
+}
+
+.cyber-command-module .custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cyber-command-module .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.cyber-command-module .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #325567;
+  border-radius: 2px;
+}

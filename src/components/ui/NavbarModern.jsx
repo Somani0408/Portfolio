@@ -22,6 +22,8 @@ const NavbarModern = () => {
         { name: 'Resources', path: '/resources' },
         { name: 'Lab', path: '/lab' },
         { name: 'Hire Me', path: '/contact' },
+        { name: 'Writeups', path: '/writeups' },
+        { name: 'SYSTEM', path: '/command-center' }
     ];
 
     return (
