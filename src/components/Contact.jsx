@@ -84,6 +84,14 @@ const Contact = () => {
                                 </div>
                                 <span className="text-sm text-slate-500 group-hover:text-neon-cyan transition-colors">in/harshit-somani-40a700351</span>
                             </a>
+
+                            <a href="https://tryhackme.com/p/harshitsomani2005" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-colors group">
+                                <div className="flex items-center gap-4">
+                                    <span className="text-2xl text-slate-300 group-hover:text-white transition-colors material-symbols-outlined">security</span>
+                                    <span className="font-medium text-slate-300 group-hover:text-white">TryHackMe</span>
+                                </div>
+                                <span className="text-sm text-slate-500 group-hover:text-neon-cyan transition-colors">harshitsomani2005</span>
+                            </a>
                         </div>
                     </motion.div>
                 </div>

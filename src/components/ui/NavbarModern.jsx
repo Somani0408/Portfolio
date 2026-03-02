@@ -18,6 +18,7 @@ const NavbarModern = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Projects', path: '/projects' },
+        { name: 'SYSTEM', path: '/system-interface' },
         { name: 'Resources', path: '/resources' },
         { name: 'Lab', path: '/lab' },
         { name: 'Hire Me', path: '/contact' },
