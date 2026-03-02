@@ -11,8 +11,8 @@ const Projects = () => {
         {
             title: "Zenox AI",
             date: "Present",
-            description: "Next-generation AI assistant focused on intelligent automation, health routines, productivity optimization, and secure AI interaction. Built as an evolving system integrating AI reasoning, automation workflows, and future wearable integration.",
-            tech: ["AI", "Machine Learning", "Full Stack", "Automation", "Cybersecurity"],
+            description: "Next-generation AI system focused on intelligent automation, cybersecurity workflows, and adaptive learning.",
+            tech: ["AI", "Cybersecurity"],
             status: "Ongoing",
             github: "#",
             demo: "#",

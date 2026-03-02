@@ -7,6 +7,7 @@ import Projects from './pages/Projects';
 import Resources from './pages/Resources';
 import Lab from './pages/Lab';
 import Contact from './components/Contact';
+import SystemInterface from './pages/SystemInterface';
 import LazyAdminWriteup from './pages/writeups/LazyAdminWriteup';
 
 import DC1Writeup from './pages/writeups/DC1Writeup';
@@ -24,6 +25,7 @@ function App() {
             <Route path="resources/:section/:subcategory" element={<Resources />} />
             <Route path="lab" element={<Lab />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="system-interface" element={<SystemInterface />} />
             <Route path="resources/writeups/tryhackme/lazy-admin" element={<LazyAdminWriteup />} />
             <Route path="resources/writeups/vulnhub/dc-1" element={<DC1Writeup />} />
           </Route>
