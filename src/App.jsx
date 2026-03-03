@@ -26,6 +26,7 @@ function App() {
             <Route path="resources/:section/:subcategory" element={<Resources />} />
             <Route path="lab" element={<Lab />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="hire" element={<Navigate to="/contact" replace />} />
             <Route path="system-interface" element={<SystemInterface />} />
             <Route path="system" element={<CommandCenter />} />
             <Route path="writeups" element={<Writeups />} />
