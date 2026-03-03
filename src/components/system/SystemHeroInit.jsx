@@ -1,6 +1,15 @@
 import React from 'react';
 
-const SystemHeroInit = () => {
+const SystemHeroInit = ({ onEnter }) => {
+    const handleEnterMainframe = () => {
+        if (onEnter) {
+            onEnter();
+        } else {
+            // For manual navigation to /system later
+            window.location.href = '/';
+        }
+    };
+
     return (
         <div id="system-hero-module" className="cyber-command-module relative h-[80vh] min-h-[600px] w-full flex flex-col bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden selection:bg-primary selection:text-background-dark">
             {/* Background Elements */}
@@ -84,7 +93,9 @@ const SystemHeroInit = () => {
                             SOC Analyst <span className="text-slate-600 mx-2">|</span> PenTester <span className="text-slate-600 mx-2">|</span> AI Developer
                         </p>
 
-                        <button className="mt-8 group relative flex items-center justify-center overflow-hidden rounded-lg bg-primary/10 px-8 py-3 text-primary transition-all duration-300 hover:bg-primary hover:text-background-dark border border-primary/50 hover:shadow-[0_0_20px_rgba(37,209,244,0.6)]">
+                        <button
+                            onClick={handleEnterMainframe}
+                            className="mt-8 group relative flex items-center justify-center overflow-hidden rounded-lg bg-primary/10 px-8 py-3 text-primary transition-all duration-300 hover:bg-primary hover:text-background-dark border border-primary/50 hover:shadow-[0_0_20px_rgba(37,209,244,0.6)]">
                             <span className="mr-2 material-symbols-outlined">login</span>
                             <span className="relative font-bold tracking-widest">ENTER_MAINFRAME</span>
                         </button>

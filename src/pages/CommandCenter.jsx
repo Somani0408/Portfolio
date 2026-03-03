@@ -5,7 +5,7 @@ import NeuralNetwork from '../components/system/NeuralNetwork';
 import ProjectOps from '../components/system/ProjectOps';
 import ArchiveUplink from '../components/system/ArchiveUplink';
 
-const CommandCenter = () => {
+const CommandCenter = ({ onEnter }) => {
     // Scroll to top on mount to ensure a clean visual state
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -16,7 +16,7 @@ const CommandCenter = () => {
             {/* Global Noise / Film Grain texture applied over the whole stack */}
             <div className="bg-noise"></div>
 
-            <SystemHeroInit />
+            <SystemHeroInit onEnter={onEnter} />
             <SystemMetadata />
             <NeuralNetwork />
             <ProjectOps />

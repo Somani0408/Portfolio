@@ -1,23 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import NavbarModern from '../components/ui/NavbarModern';
 import Footer from '../components/Footer';
 import BackgroundEffects from '../components/ui/BackgroundEffects';
-import TerminalIntro from '../components/TerminalIntro';
-import { AnimatePresence } from 'framer-motion';
 
 const Layout = () => {
-    const [showIntro, setShowIntro] = useState(true);
-
     return (
         <div className="min-h-screen flex flex-col font-sans text-text-primary antialiased bg-transparent relative">
             <div className="bg-noise" />
-            <AnimatePresence>
-                {showIntro && <TerminalIntro onComplete={() => setShowIntro(false)} />}
-            </AnimatePresence>
 
-            {/* Main Content (Always rendered, revealed when intro fades) */}
-            <div className={`transition-opacity duration-1000 ${showIntro ? 'opacity-0' : 'opacity-100'} flex flex-col min-h-screen`}>
+            {/* Main Content */}
+            <div className="flex flex-col min-h-screen">
                 {/* Background */}
                 <BackgroundEffects />
 
