@@ -95,9 +95,15 @@ const SystemHeroInit = ({ onEnter }) => {
 
                         <button
                             onClick={handleEnterMainframe}
-                            className="mt-8 group relative flex items-center justify-center overflow-hidden rounded-lg bg-primary/10 px-8 py-3 text-primary transition-all duration-300 hover:bg-primary hover:text-background-dark border border-primary/50 hover:shadow-[0_0_20px_rgba(37,209,244,0.6)]">
-                            <span className="mr-2 material-symbols-outlined">login</span>
-                            <span className="relative font-bold tracking-widest">ENTER_MAINFRAME</span>
+                            className="mt-8 group relative flex items-center justify-center overflow-hidden rounded-xl bg-cyan-500/10 px-10 py-4 text-cyan-400 transition-all duration-300 hover:bg-cyan-400 hover:text-black border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)] backdrop-blur-sm cursor-pointer z-50">
+                            <span className="mr-3 material-symbols-outlined text-xl">login</span>
+                            <span className="relative font-bold tracking-[0.2em] text-sm md:text-base">ENTER MAINFRAME</span>
+
+                            {/* Animated corners for cyber feel */}
+                            <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-400 group-hover:border-black transition-colors"></span>
+                            <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyan-400 group-hover:border-black transition-colors"></span>
+                            <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-cyan-400 group-hover:border-black transition-colors"></span>
+                            <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-400 group-hover:border-black transition-colors"></span>
                         </button>
                     </div>
 
