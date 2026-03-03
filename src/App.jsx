@@ -10,7 +10,7 @@ import Contact from './components/Contact';
 import SystemInterface from './pages/SystemInterface';
 import LazyAdminWriteup from './pages/writeups/LazyAdminWriteup';
 import CommandCenter from './pages/CommandCenter';
-
+import Writeups from './pages/Writeups';
 import DC1Writeup from './pages/writeups/DC1Writeup';
 
 function App() {
@@ -27,9 +27,10 @@ function App() {
             <Route path="lab" element={<Lab />} />
             <Route path="contact" element={<Contact />} />
             <Route path="system-interface" element={<SystemInterface />} />
+            <Route path="system" element={<CommandCenter />} />
+            <Route path="writeups" element={<Writeups />} />
             <Route path="resources/writeups/tryhackme/lazy-admin" element={<LazyAdminWriteup />} />
             <Route path="resources/writeups/vulnhub/dc-1" element={<DC1Writeup />} />
-            <Route path="command-center" element={<CommandCenter />} />
           </Route>
         </Routes>
       </Router>

@@ -18,12 +18,11 @@ const NavbarModern = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Projects', path: '/projects' },
-        { name: 'SYSTEM', path: '/system-interface' },
+        { name: 'System', path: '/system' },
         { name: 'Resources', path: '/resources' },
         { name: 'Lab', path: '/lab' },
-        { name: 'Hire Me', path: '/contact' },
         { name: 'Writeups', path: '/writeups' },
-        { name: 'SYSTEM', path: '/command-center' }
+        { name: 'Hire Me', path: '/contact' }
     ];
 
     return (
