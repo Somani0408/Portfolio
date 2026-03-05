@@ -40,7 +40,7 @@ const HeroModern = () => {
                 <div className="flex flex-wrap gap-4 mt-2">
                     <button
                         onClick={() => navigate('/projects')}
-                        className="group flex min-w-[140px] cursor-pointer items-center justify-center gap-3 rounded-lg h-12 px-6 bg-primary text-slate-950 text-base font-bold tracking-wide transition-all hover:bg-white hover:shadow-[0_0_20px_rgba(19,164,236,0.4)]"
+                        className="group flex min-w-[140px] cursor-pointer items-center justify-center gap-3 rounded-lg h-12 px-6 bg-neon-cyan text-slate-900 shadow-[0_0_20px_rgba(34,211,238,0.6)] text-base font-extrabold tracking-wide transition-all hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] border border-neon-cyan hover:border-white"
                     >
                         <span>View Projects</span>
                         <span className="material-symbols-outlined transition-transform group-hover:translate-x-1 text-sm font-bold">arrow_forward</span>

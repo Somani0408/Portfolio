@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from '../layouts/Layout';
 import Home from '../pages/Home';
 import Projects from '../pages/Projects';
+import Experience from '../pages/Experience';
 import Resources from '../pages/Resources';
 import Lab from '../pages/Lab';
 import Contact from './Contact';
@@ -19,6 +20,7 @@ const MainPortfolioApp = () => {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="projects" element={<Projects />} />
+                    <Route path="experience" element={<Experience />} />
                     <Route path="resources" element={<Navigate to="/resources/introduction" replace />} />
                     <Route path="resources/:section" element={<Resources />} />
                     <Route path="resources/:section/:subcategory" element={<Resources />} />

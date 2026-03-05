@@ -18,7 +18,7 @@ const NavbarModern = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Projects', path: '/projects' },
-        { name: 'System', path: '/system' },
+        { name: 'Experience', path: '/experience' },
         { name: 'Resources', path: '/resources' },
         { name: 'Lab', path: '/lab' },
         { name: 'Writeups', path: '/writeups' },

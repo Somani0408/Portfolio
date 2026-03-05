@@ -19,6 +19,7 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/', icon: FiHome },
         { name: 'Projects', path: '/projects', icon: FiCpu },
+        { name: 'Experience', path: '/experience', icon: FiBook },
         { name: 'Resources', path: '/resources', icon: FiBook },
         { name: 'Lab', path: '/lab', icon: FiTerminal },
         { name: 'HIRE ME', path: '/contact', icon: FiMail },
