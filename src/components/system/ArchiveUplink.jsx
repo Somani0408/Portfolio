@@ -2,7 +2,7 @@ import React from 'react';
 
 const ArchiveUplink = () => {
     return (
-        <div id="archive-uplink-module" className="cyber-command-module relative flex w-full flex-col font-display bg-[#f6f8f8] dark:bg-[#101f22] text-slate-900 dark:text-slate-100 z-10 py-10">
+        <div id="archive-uplink-module" className="cyber-command-module relative flex w-full flex-col font-display bg-[#f6f8f8] dark:bg-[#101f22] text-slate-200 z-10 py-10">
             {/* Scanline Overlay */}
             <div className="archive-scanline"></div>
 

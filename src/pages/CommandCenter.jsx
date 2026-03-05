@@ -4,6 +4,7 @@ import SystemMetadata from '../components/system/SystemMetadata';
 import NeuralNetwork from '../components/system/NeuralNetwork';
 import ProjectOps from '../components/system/ProjectOps';
 import ArchiveUplink from '../components/system/ArchiveUplink';
+import CyberRadar from '../components/system/CyberRadar';
 
 const CommandCenter = ({ onEnter }) => {
     // Scroll to top on mount to ensure a clean visual state
@@ -20,6 +21,7 @@ const CommandCenter = ({ onEnter }) => {
             <SystemMetadata />
             <NeuralNetwork />
             <ProjectOps />
+            <CyberRadar />
             <ArchiveUplink />
         </div>
     );

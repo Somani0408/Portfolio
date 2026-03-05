@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProjectOps = () => {
     return (
-        <div id="project-ops-module" className="cyber-command-module relative flex w-full flex-col font-display bg-[#f6f7f8] dark:bg-[#101c22] text-slate-900 dark:text-slate-100 pt-10">
+        <div id="project-ops-module" className="cyber-command-module relative flex w-full flex-col font-display bg-[#f6f7f8] dark:bg-[#101c22] text-slate-200 pt-10">
             {/* Radar Sweep Background Effect */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-10" style={{ background: "radial-gradient(circle at 50% 50%, transparent 0%, transparent 50%, rgba(19, 164, 236, 0.1) 50.5%, transparent 51%)" }}></div>
 
@@ -11,7 +11,7 @@ const ProjectOps = () => {
 
                     {/* Header */}
                     <header className="flex flex-col md:flex-row items-center justify-between whitespace-nowrap border-b border-solid border-b-slate-200 dark:border-b-[#233c48] px-4 md:px-10 py-4 bg-white/5 dark:bg-[#111c22]/80 backdrop-blur-md rounded-xl">
-                        <div className="flex items-center gap-4 text-slate-900 dark:text-white mb-4 md:mb-0">
+                        <div className="flex items-center gap-4 text-white mb-4 md:mb-0">
                             <div className="size-8 flex items-center justify-center text-primary">
                                 <span className="material-symbols-outlined text-3xl">terminal</span>
                             </div>
@@ -73,7 +73,7 @@ const ProjectOps = () => {
                                                             ONGOING
                                                         </span>
                                                     </div>
-                                                    <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">ZENOX AI</h3>
+                                                    <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-white">ZENOX AI</h3>
                                                 </div>
                                                 <span className="material-symbols-outlined text-slate-400 dark:text-[#5f7a8a] text-4xl opacity-20">hub</span>
                                             </div>
@@ -83,11 +83,11 @@ const ProjectOps = () => {
                                             <div className="grid grid-cols-2 gap-4 mt-2">
                                                 <div className="bg-slate-100 dark:bg-[#111c22] p-3 rounded border border-slate-200 dark:border-[#233c48]">
                                                     <div className="text-xs text-slate-500 dark:text-[#5f7a8a] font-mono mb-1">MODULE_TYPE</div>
-                                                    <div className="text-sm font-semibold text-slate-800 dark:text-slate-200">Transformer Model</div>
+                                                    <div className="text-sm font-semibold text-slate-200">Transformer Model</div>
                                                 </div>
                                                 <div className="bg-slate-100 dark:bg-[#111c22] p-3 rounded border border-slate-200 dark:border-[#233c48]">
                                                     <div className="text-xs text-slate-500 dark:text-[#5f7a8a] font-mono mb-1">LANGUAGE</div>
-                                                    <div className="text-sm font-semibold text-slate-800 dark:text-slate-200">Python / TensorFlow</div>
+                                                    <div className="text-sm font-semibold text-slate-200">Python / TensorFlow</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,7 +96,7 @@ const ProjectOps = () => {
                                                 <span className="material-symbols-outlined text-sm">open_in_full</span>
                                                 EXPAND MODULE
                                             </button>
-                                            <button className="flex items-center gap-2 px-5 h-10 bg-transparent hover:bg-slate-100 dark:hover:bg-[#233c48] text-slate-700 dark:text-[#92b7c9] border border-slate-300 dark:border-[#325567] rounded-lg font-medium text-sm transition-all">
+                                            <button className="flex items-center gap-2 px-5 h-10 bg-transparent hover:bg-slate-800 text-slate-200 border border-slate-600 rounded-lg font-medium text-sm transition-all">
                                                 <span className="material-symbols-outlined text-sm">code</span>
                                                 REPOSITORY
                                             </button>
@@ -185,7 +185,7 @@ const ProjectOps = () => {
                                         <span className="material-symbols-outlined text-2xl">monitoring</span>
                                     </div>
                                     <div className="flex flex-col gap-1">
-                                        <h3 className="text-slate-900 dark:text-white text-lg font-bold leading-tight">SYSTEM DIAGNOSTICS</h3>
+                                        <h3 className="text-white text-lg font-bold leading-tight">SYSTEM DIAGNOSTICS</h3>
                                         <p className="text-slate-500 dark:text-[#92b7c9] text-sm font-normal">Real-time performance metrics of all active modules.</p>
                                         <div className="flex gap-4 mt-2">
                                             <div className="flex flex-col">

@@ -23,6 +23,15 @@ const TerminalIntro = ({ onComplete }) => {
     ];
 
     useEffect(() => {
+        // Feature 1: Subtly play boot sound once when BootScreen appears
+        try {
+            const audio = new Audio('/sounds/boot.mp3');
+            audio.volume = 0.2;
+            audio.play().catch(e => console.warn('Audio autoplay blocked:', e));
+        } catch (e) {
+            // ignore silently
+        }
+
         let timeouts = [];
         let accumulatedDelay = 0;
 
