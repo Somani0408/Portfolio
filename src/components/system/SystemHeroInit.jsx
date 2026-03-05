@@ -2,21 +2,8 @@ import React, { useState } from 'react';
 
 const SystemHeroInit = ({ onEnter }) => {
     const [clickCount, setClickCount] = useState(0);
-    const [showGlitch, setShowGlitch] = useState(false);
 
     const handleEnterMainframe = () => {
-        if (showGlitch) return;
-
-        setClickCount(prev => prev + 1);
-        setTimeout(() => setClickCount(prev => Math.max(0, prev - 1)), 1000);
-
-        if (clickCount >= 2 && !showGlitch) { // If it was 2 and they clicked again, it's 3
-            setShowGlitch(true);
-            setClickCount(0); // Reset after glitch
-            setTimeout(() => setShowGlitch(false), 1000);
-            return;
-        }
-
         if (onEnter) {
             onEnter();
         } else {
@@ -27,17 +14,7 @@ const SystemHeroInit = ({ onEnter }) => {
 
     return (
         <div id="system-hero-module" className="cyber-command-module relative h-[80vh] min-h-[600px] w-full flex flex-col bg-background-light dark:bg-background-dark text-slate-200 overflow-hidden selection:bg-primary selection:text-background-dark">
-            {/* Feature 2: Access Denied Glitch Overlay */}
-            {showGlitch && (
-                <div className="absolute inset-0 flex items-center justify-center bg-red-900/90 z-[100] animate-[shake_0.1s_linear_infinite]">
-                    <div className="text-center">
-                        <h2 className="text-red-500 font-bold text-4xl lg:text-6xl tracking-[0.2em] font-mono mix-blend-screen" style={{ textShadow: "4px 0 0 rgba(255,0,0,0.8), -2px 0 0 rgba(0,0,255,0.8)" }}>
-                            ACCESS DENIED
-                        </h2>
-                        <p className="text-red-400 mt-4 text-xl tracking-widest font-mono blink">Too many requests</p>
-                    </div>
-                </div>
-            )}
+
 
             {/* Background Elements */}
             <div className="absolute inset-0 tech-bg-meta opacity-30 pointer-events-none z-0"></div>

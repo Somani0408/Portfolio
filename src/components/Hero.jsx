@@ -73,7 +73,7 @@ const Hero = () => {
           <div className="mt-8 flex gap-4">
             <a
               href="/projects"
-              className="px-6 py-3 rounded-md bg-neon-cyan/90 text-black font-semibold hover:bg-neon-cyan transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+              className="px-6 py-3 rounded-md bg-neon-cyan text-slate-900 font-extrabold shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] border-2 border-neon-cyan hover:border-white"
             >
               View Projects
             </a>
