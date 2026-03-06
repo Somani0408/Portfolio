@@ -59,7 +59,7 @@ const NavbarModern = () => {
 
                         <div className="h-6 w-px bg-border-dark"></div>
 
-                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 cursor-pointer overflow-hidden rounded-lg h-10 px-5 bg-secondary-dark border border-primary/30 hover:bg-primary/10 hover:border-primary text-primary text-sm font-bold transition-all duration-300 shadow-[0_0_10px_rgba(19,164,236,0.1)] hover:shadow-[0_0_20px_rgba(19,164,236,0.2)]">
+                        <a href="/New_resume%20(2).pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 cursor-pointer overflow-hidden rounded-lg h-10 px-5 bg-secondary-dark border border-primary/30 hover:bg-primary/10 hover:border-primary text-primary text-sm font-bold transition-all duration-300 shadow-[0_0_10px_rgba(19,164,236,0.1)] hover:shadow-[0_0_20px_rgba(19,164,236,0.2)]">
                             <span className="material-symbols-outlined text-[18px]">download</span>
                             <span className="truncate">Download CV</span>
                         </a>
@@ -98,7 +98,7 @@ const NavbarModern = () => {
                                     {link.name}
                                 </NavLink>
                             ))}
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center mt-4 rounded-lg h-12 bg-primary/10 border border-primary text-primary font-bold">
+                            <a href="/New_resume%20(2).pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center mt-4 rounded-lg h-12 bg-primary/10 border border-primary text-primary font-bold">
                                 <span className="material-symbols-outlined">download</span>
                                 Download CV
                             </a>
