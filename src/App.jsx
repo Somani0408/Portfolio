@@ -1,11 +1,11 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import SystemEntryController from './components/SystemEntryController';
+import MainPortfolioApp from './components/MainPortfolioApp';
 
 function App() {
   return (
     <HelmetProvider>
-      <SystemEntryController />
+      <MainPortfolioApp />
     </HelmetProvider>
   );
 }
